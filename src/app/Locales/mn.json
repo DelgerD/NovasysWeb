@@ -1,0 +1,18 @@
+{
+  "brand": "NovaSys",
+  "brandDescription": "Орчин үеийн бизнесийн программ хангамжийн шийдлүүд.",
+  "contact": "Холбоо барих",
+  "phoneLabel": "Утас",
+  "emailLabel": "Имэйл",
+  "locationLabel": "Хаяг",
+  "phone": "+976 9999-8888",
+  "email": "Sales@novastd.com",
+  "location": "Чингисийн өргөн чөлөө Building #90, HUD - 3 хороо, Улаанбаатар 17060",
+  "quickLinks": {
+    "title": "Хурдан холбоосууд",
+    "home": "Нүүр",
+    "about": "Бидний тухай",
+    "contact": "Холбоо барих"
+  },
+   "lang": "MN"
+}

@@ -1,0 +1,18 @@
+{
+  "brand": "NovaSys",
+  "brandDescription": "Innovative software solutions for modern businesses.",
+  "contact": "Contact",
+  "phoneLabel": "Phone",
+  "emailLabel": "Email",
+  "locationLabel": "Location",
+  "phone": "+976 9999-8888",
+  "email": "Sales@novastd.com",
+  "location": "Chinggis Ave Building #90, HUD - 3 khoroo, Ulaanbaatar 17060",
+  "quickLinks": {
+    "title": "Quick Links",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+   "lang": "EN"
+}
