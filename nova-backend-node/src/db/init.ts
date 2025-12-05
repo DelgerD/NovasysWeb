@@ -60,6 +60,15 @@ export async function initDb(): Promise<void> {
         image VARCHAR(255),
         created_at TIMESTAMP DEFAULT NOW()
       );
+    `); await client.query(`
+        CREATE TABLE IF NOT EXISTS newsEn (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        date DATE NOT NULL,
+        description TEXT NOT NULL,
+        image VARCHAR(255),
+        created_at TIMESTAMP DEFAULT NOW()
+      );
     `);
     await client.query(`
         CREATE TABLE IF NOT EXISTS contacts (

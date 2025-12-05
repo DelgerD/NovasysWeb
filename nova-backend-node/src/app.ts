@@ -7,6 +7,9 @@ import healthRouter from "./routes/health";
 import itemsRouter from "./routes/items";
 import newsRouter from "./routes/news";
 import contactRouter from "./routes/contact";
+import adminRouter from "./routes/admin";
+import usersRouter from "./routes/users";
+import newsEnRouter from "./routes/newsEn";
 const app = express();
 
 // --- Middlewares ---
@@ -30,10 +33,13 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // --- Routes ---
-app.use("/health", healthRouter);
+//app.use("/health", healthRouter);
 app.use("/items", itemsRouter);
 app.use("/news", newsRouter);
 app.use("/contacts", contactRouter);
+app.use("/admin", adminRouter);
+app.use("/users", usersRouter);
+app.use("/newsEn", newsEnRouter);
 // Root endpoint
 app.get("/", (_req, res) => {
   res.json({ message: "NovaSys Backend (Node + TS) — running" });

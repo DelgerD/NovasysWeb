@@ -63,6 +63,28 @@ router.get("/", async (_req, res) => {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch contacts" });
   }
+  router.get("/contacts", async (req, res) => {
+  const { start, end } = req.query;
+
+  let sql = "SELECT * FROM contacts WHERE 1=1";
+  const params: any[] = [];
+
+  if (start) {
+    params.push(start);
+    sql += ` AND created_at >= $${params.length}`;
+  }
+
+  if (end) {
+    params.push(end);
+    sql += ` AND created_at <= $${params.length}`;
+  }
+
+  sql += " ORDER BY created_at DESC";
+
+  const result = await pool.query(sql, params);
+  res.json(result.rows);
+});
+
 });
 
 export default router;

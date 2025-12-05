@@ -33,6 +33,10 @@ const Header = () => {
           <Link href="/components/Contact" className="hover:text-gray-200 transition">
             {translations.quickLinks.contact}
           </Link>
+          <Link href="/components/login" className="hover:text-gray-200 transition">
+            {translations.quickLinks.login}
+          </Link>
+          
         </nav>
 
         {/* Language Switch */}

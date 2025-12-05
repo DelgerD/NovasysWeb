@@ -42,5 +42,11 @@ router.get("/", async (_req, res) => {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch news" });
   }
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  await pool.query("DELETE FROM news WHERE id=$1", [id]);
+  res.json({ message: "Deleted" });
+});
+
 });
 export default router;

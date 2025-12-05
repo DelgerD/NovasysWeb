@@ -57,6 +57,7 @@ const Footer = () => {
             <li><a href="/Home" className="hover:text-white transition">{t.quickLinks.home}</a></li>
             <li><a href="/about" className="hover:text-white transition">{t.quickLinks.about}</a></li>
             <li><a href="/contact" className="hover:text-white transition">{t.quickLinks.contact}</a></li>
+            <li><a href="/components/login" className="hover:text-white transition">{t.quickLinks.login}</a></li>
           </ul>
         </div>
 

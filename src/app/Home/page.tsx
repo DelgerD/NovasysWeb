@@ -2,12 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useLanguage } from "@/app/context/LanguageContext"; 
 
-const heroImages = [
-  "/1.jpg",
-  "/2.jpg",
-  "/3.jpg",
-];
+const heroImages = ["/1.jpg", "/2.jpg", "/3.jpg"];
 
 interface NewsItem {
   id: number;
@@ -18,9 +15,11 @@ interface NewsItem {
 
 const Home: React.FC = () => {
   const [current, setCurrent] = useState(0);
-  const [news, setNews] = useState<NewsItem[]>([]); // News state
+  const [news, setNews] = useState<NewsItem[]>([]);
 
-  // Автоматаар 5 секунд тутам зураг солигдох
+  const { lang } = useLanguage(); // << Хэл эндээс авна
+
+  // Slider
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % heroImages.length);
@@ -28,11 +27,16 @@ const Home: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Backend-с мэдээ авах
+  // Мэдээ татах — хэл солигдоход дахин ажиллана
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get<NewsItem[]>("http://localhost:8000/news"); // backend URL
+        const endpoint =
+          lang === "en"
+            ? "http://localhost:8000/newsEn"
+            : "http://localhost:8000/news";
+
+        const response = await axios.get<NewsItem[]>(endpoint);
         setNews(response.data);
       } catch (err) {
         console.error("Failed to fetch news:", err);
@@ -40,10 +44,11 @@ const Home: React.FC = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [lang]); // << Хэл солигдоход автоматаар дахин дуудна
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 container mx-auto">
+
       {/* Hero Section */}
       <section className="relative h-[600px] w-full overflow-hidden">
         {heroImages.map((img, index) => (
@@ -77,9 +82,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Latest News Section */}
+      {/* Latest News */}
       <section className="bg-white py-20 px-4">
-        <h2 className="text-3xl text-black font-bold text-center mb-12">Latest News</h2>
+        <h2 className="text-3xl text-black font-bold text-center mb-12">
+          {lang === "en" ? "Latest News" : "Сүүлийн мэдээ"}
+        </h2>
+
         <div className="grid md:grid-cols-3 gap-8">
           {news.length > 0 ? (
             news.map((item) => (
