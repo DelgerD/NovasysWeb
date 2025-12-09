@@ -63,7 +63,7 @@ const About: React.FC = () => {
         <h2 className="text-3xl font-bold mb-4">Work With Us</h2>
         <p className="mb-8">Contact us to discuss your mining equipment needs or project requirements.</p>
         <a
-          href="/contact"
+          href="/components/Contact"
           className="px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-400 transition"
         >
           Get in Touch

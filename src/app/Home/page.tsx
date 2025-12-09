@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLanguage } from "@/app/context/LanguageContext"; 
 
-const heroImages = ["/1.jpg", "/2.jpg", "/3.jpg"];
+const heroImages = ["/1.png", "/2.jpg", "/3.jpg"];
 
 interface NewsItem {
   id: number;
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
             key={img}
             src={img}
             alt={`Hero ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity brightness-75 duration-1000 ${
               index === current ? "opacity-100" : "opacity-0"
             }`}
           />
