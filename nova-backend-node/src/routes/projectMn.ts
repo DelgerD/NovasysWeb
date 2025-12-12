@@ -9,7 +9,7 @@ const router = Router();
 // Зураг хадгалах middleware
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploadsEn/"); // /uploads folder дотор хадгална
+    cb(null, "uploadsMn/project/"); // /uploads folder дотор хадгална
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
@@ -24,7 +24,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     const imagePath = req.file ? req.file.filename : null;
 
     const result = await pool.query(
-      "INSERT INTO newsEn (title, date, description, image) VALUES ($1, $2, $3, $4) RETURNING *",
+      "INSERT INTO projectMn (title, date, description, image) VALUES ($1, $2, $3, $4) RETURNING *",
       [title, date, description, imagePath]
     );
 
@@ -36,30 +36,28 @@ router.post("/", upload.single("image"), async (req, res) => {
 });
 router.get("/", async (_req, res) => {
   try {
-    const result = await pool.query("SELECT id, date, description, title , image FROM newsEn WHERE isVisible=true ORDER BY date DESC");
+    const result = await pool.query( "SELECT id, date, description, title , image FROM projectMn WHERE isVisible=true ORDER BY date DESC");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to fetch news" });
+    res.status(500).json({ error: "Failed to fetch project" });
   }
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  await pool.query("DELETE FROM newsEn WHERE id=$1", [id]);
+  await pool.query("DELETE FROM projectMn WHERE id=$1", [id]);
   res.json({ message: "Deleted" });
 });
-// Hide / Unhide
 router.patch("/hide/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // isVisible-г false болгох
-    await pool.query("UPDATE newsEn SET isVisible=false WHERE id=$1", [id]);
+    await pool.query("UPDATE projectMn SET isVisible=false WHERE id=$1", [id]);
     res.json({ message: "News item hidden" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to hide news" });
   }
 });
-
 
 });
 export default router;

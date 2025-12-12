@@ -2,32 +2,43 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLanguage } from "@/app/context/LanguageContext"; 
+import { useLanguage } from "@/app/context/LanguageContext";
 
-const heroImages = ["/1.png", "/2.jpg", "/3.jpg"];
+const heroImages = ["/1.jpg", "/2.jpg", "/3.jpg"];
 
 interface NewsItem {
   id: number;
   title: string;
   description: string;
   date: string;
+  image: string;
+}
+
+interface ProjectItem {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
 }
 
 const Home: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [projects, setProjects] = useState<ProjectItem[]>([]);
 
-  const { lang } = useLanguage(); // << Хэл эндээс авна
+  const { lang } = useLanguage();
 
   // Slider
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    const interval = setInterval(
+      () => setCurrent((prev) => (prev + 1) % heroImages.length),
+      5000
+    );
     return () => clearInterval(interval);
   }, []);
 
-  // Мэдээ татах — хэл солигдоход дахин ажиллана
+  // ---------- 📰 NEWS татах ----------
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -44,12 +55,31 @@ const Home: React.FC = () => {
     };
 
     fetchNews();
-  }, [lang]); // << Хэл солигдоход автоматаар дахин дуудна
+  }, [lang]);
+
+  // ---------- 🛠 PROJECT татах ----------
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const endpoint =
+          lang === "en"
+            ? "http://localhost:8000/projectEn"
+            : "http://localhost:8000/projectMn";
+
+        const response = await axios.get<ProjectItem[]>(endpoint);
+        setProjects(response.data);
+      } catch (err) {
+        console.error("Failed to fetch projects:", err);
+      }
+    };
+
+    fetchProjects();
+  }, [lang]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 container mx-auto">
 
-      {/* Hero Section */}
+      {/* HERO */}
       <section className="relative h-[600px] w-full overflow-hidden">
         {heroImages.map((img, index) => (
           <img
@@ -82,29 +112,99 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* 📰 Latest News */}
       <section className="bg-white py-20 px-4">
-        <h2 className="text-3xl text-black font-bold text-center mb-12">
-          {lang === "en" ? "Latest News" : "Сүүлийн мэдээ"}
-        </h2>
+  <h2 className="text-3xl text-black font-bold text-center mb-12">
+    {lang === "en" ? "Latest News" : "Сүүлийн мэдээ"}
+  </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {news.length > 0 ? (
-            news.map((item) => (
-              <div
-                key={item.id}
-                className="bg-gray-500 p-6 rounded shadow transition transform hover:scale-105 hover:shadow-lg duration-300"
-              >
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="mt-2 text-md">{item.description}</p>
-                <p className="text-sm">{new Date(item.date).toLocaleDateString()}</p>
-              </div>
-            ))
-          ) : (
-            <p className="text-center col-span-3">No news available</p>
-          )}
-        </div>
-      </section>
+  <div className="grid md:grid-cols-3 gap-10 ">
+    {news.length > 0 ? (
+      news.map((item) => {
+        const imageUrl =
+          item.image
+            ? (lang === "en"
+                ? `http://localhost:8000/uploadsEn/${item.image}`
+                : `http://localhost:8000/uploadsMn/${item.image}`)
+            : "/default-image.png";
+
+        return (
+          <div
+            key={item.id}
+            className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          >
+            <img
+              src={imageUrl}
+              alt={item.title}
+              className="w-full h-48 object-cover rounded-xl mb-4"
+            />
+
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
+              {item.title}
+            </h3>
+
+            <p className="text-gray-700 line-clamp-3 mb-3">
+              {item.description}
+            </p>
+
+            <p className="text-sm text-gray-500">
+              {new Date(item.date).toLocaleDateString()}
+            </p>
+          </div>
+        );
+      })
+    ) : (
+      <p className="text-center col-span-3">No news available</p>
+    )}
+  </div>
+</section>
+
+{/* 🛠 Recent Projects */}
+<section className="bg-white py-20 px-4 mt-4">
+  <h2 className="text-3xl text-black font-bold text-center mb-12">
+    {lang === "en" ? "Recent Projects" : "Сүүлийн төслүүд"}
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-10">
+    {projects.length > 0 ? (
+      projects.map((item) => {
+        const imageUrl =
+          item.image
+            ? (lang === "en"
+                ? `http://localhost:8000/uploadsEn/project/${item.image}`
+                : `http://localhost:8000/uploadsMn/project/${item.image}`)
+            : "/default-image.png";
+
+        return (
+          <div
+            key={item.id}
+            className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          >
+            <img
+              src={imageUrl}
+              alt={item.title}
+              className="w-full h-48 object-cover rounded-xl mb-4"
+            />
+
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
+              {item.title}
+            </h3>
+
+            <p className="text-gray-700 line-clamp-3 mb-3">
+              {item.description}
+            </p>
+
+            <p className="text-sm text-gray-500">
+              {new Date(item.date).toLocaleDateString()}
+            </p>
+          </div>
+        );
+      })
+    ) : (
+      <p className="text-center col-span-3">No projects available</p>
+    )}
+  </div>
+</section>
     </div>
   );
 };

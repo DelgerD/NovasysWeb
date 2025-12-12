@@ -1,5 +1,5 @@
 "use client";
-
+import { Home, Info, Phone } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
 import en from "@/app/locales/en.json";
@@ -12,7 +12,7 @@ const Header = () => {
   const translations = lang === "en" ? en : mn;
 
   const pathname = usePathname();
-  const isHome = pathname === "/Home";
+  const isHome = pathname === "/" || pathname === "/Home";
 
   const [isTop, setIsTop] = useState(true);
 
@@ -46,17 +46,23 @@ const Header = () => {
         </Link>
 
         {/* Menu */}
-        <nav className="space-x-6">
-          <Link href="/Home" className="hover:text-gray-200 transition">
+       <nav className="space-x-6 flex items-center">
+          <Link href="/Home" className="hover:text-gray-200 transition flex items-center gap-2">
+            <Home size={18} />
             {translations.quickLinks.home}
           </Link>
-          <Link href="/components/About" className="hover:text-gray-200 transition">
+
+          <Link href="/components/About" className="hover:text-gray-200 transition flex items-center gap-2">
+            <Info size={18} />
             {translations.quickLinks.about}
           </Link>
-          <Link href="/components/Contact" className="hover:text-gray-200 transition">
+
+          <Link href="/components/Contact" className="hover:text-gray-200 transition flex items-center gap-2">
+            <Phone size={18} />
             {translations.quickLinks.contact}
           </Link>
         </nav>
+
 
         {/* Language Switch */}
         <button

@@ -80,6 +80,26 @@ export async function initDb(): Promise<void> {
       created_at TIMESTAMP DEFAULT now()
       );
     `);
+    await client.query(`
+        CREATE TABLE IF NOT EXISTS projectEn(
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        date DATE NOT NULL,
+        description TEXT NOT NULL,
+        image VARCHAR(255),
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    await client.query(`
+        CREATE TABLE IF NOT EXISTS projectMn(
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        date DATE NOT NULL,
+        description TEXT NOT NULL,
+        image VARCHAR(255),
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
 
     // END transaction
     await client.query("COMMIT");

@@ -113,10 +113,30 @@ const AdminContacts: React.FC = () => {
               <p className="text-sm text-gray-700"><strong>Email:</strong> {c.email}</p>
               <p className="text-sm text-gray-700"><strong>Subject:</strong> {c.subject}</p>
               <p className="text-sm text-gray-700 mt-2">{c.message}</p>
-            </div>
-          ))}
+             {/* Delete button */}
+        <div className="mt-2 flex justify-end">
+          <button
+            onClick={async () => {
+              if (!confirm("Are you sure you want to delete this message?")) return;
+              try {
+                await axios.delete(`http://localhost:8000/contacts/${c.id}`);
+                // Delete хийсний дараа contact list-ийг refresh хийх
+                setContacts((prev) => prev.filter((contact) => contact.id !== c.id));
+              } catch (err) {
+                console.error(err);
+                alert("Failed to delete message.");
+              }
+            }}
+            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+          >
+            Delete
+          </button>
         </div>
-      )}
+        
+      </div>
+    ))}
+  </div>
+)}
     </div>
   );
 };

@@ -84,6 +84,11 @@ router.get("/", async (_req, res) => {
   const result = await pool.query(sql, params);
   res.json(result.rows);
 });
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  await pool.query("DELETE FROM contacts WHERE id=$1", [id]);
+  res.json({ message: "Deleted" });
+});
 
 });
 

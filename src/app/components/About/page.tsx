@@ -51,7 +51,10 @@ const About: React.FC = () => {
 
       {/* Mission & Vision */}
       <section className="py-20 px-4 container mx-auto text-center">
-        <h2 className="text-3xl text-black font-bold mb-12">Our Mission & Vision</h2>
+        <h2 className="text-3xl text-black font-bold mb-12">Our Mission & Vision
+          
+        </h2>
+        
         <div className="max-w-3xl mx-auto space-y-6 text-gray-700">
           <p><strong>Mission:</strong> To provide reliable and innovative mining equipment that enhances operational efficiency and safety.</p>
           <p><strong>Vision:</strong> To be the leading partner for mining companies worldwide, recognized for quality, service, and sustainable solutions.</p>

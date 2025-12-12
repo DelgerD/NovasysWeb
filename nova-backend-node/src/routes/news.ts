@@ -2,14 +2,15 @@
 import { Router } from "express";
 import multer from "multer";
 import { pool } from "../db/init";
-
+import fs from "fs";
+import path from "path";
 
 const router = Router();
 
 // Зураг хадгалах middleware
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // /uploads folder дотор хадгална
+    cb(null, "uploadsMn/"); // /uploads folder дотор хадгална
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
@@ -36,7 +37,7 @@ router.post("/", upload.single("image"), async (req, res) => {
 });
 router.get("/", async (_req, res) => {
   try {
-    const result = await pool.query("SELECT id, date, description, title FROM news ORDER BY date DESC");
+    const result = await pool.query("SELECT id, date, description, title , image FROM news ORDER BY date DESC");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
@@ -44,9 +45,30 @@ router.get("/", async (_req, res) => {
   }
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  await pool.query("DELETE FROM news WHERE id=$1", [id]);
-  res.json({ message: "Deleted" });
+
+  try {
+    // 1️⃣ Мэдээллийг татах (зурган filename-г авах)
+    const result = await pool.query("SELECT image FROM news WHERE id=$1", [id]);
+    const imageName = result.rows[0]?.image;
+
+    // 2️⃣ Хэрэв зураг байгаа бол файл системээс устгах
+    if (imageName) {
+      const filePath = path.join(__dirname, "../uploadsMn", imageName);
+      fs.unlink(filePath, (err) => {
+        if (err) console.error("Failed to delete image file:", err);
+        else console.log("Image deleted:", filePath);
+      });
+    }
+
+    // 3️⃣ DB-с record-ийг устгах
+    await pool.query("DELETE FROM news WHERE id=$1", [id]);
+    res.json({ message: "Deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to delete" });
+  }
 });
+
 
 });
 export default router;

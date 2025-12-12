@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-interface NewsItem {
+interface ProjectItem {
   id: number;
   title: string;
   date: string;
@@ -17,20 +17,20 @@ const AdminPage: React.FC = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<File | null>(null);
 
-  const [newsList, setNewsList] = useState<NewsItem[]>([]);
+  const [ProjectList, setProjectList] = useState<ProjectItem[]>([]);
 
   // 🔥 Fetch all news on load
-  const fetchNews = async () => {
+  const fetchProject = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/news");
-      setNewsList(res.data);
+      const res = await axios.get("http://localhost:8000/projectEn");
+      setProjectList(res.data);
     } catch (err) {
-      console.error("Failed to fetch news:", err);
+      console.error("Failed to fetch project:", err);
     }
   };
 
   useEffect(() => {
-    fetchNews();
+    fetchProject();
   }, []);
 
   // ➕ Submit new news
@@ -43,15 +43,15 @@ const AdminPage: React.FC = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.post("http://localhost:8000/news", formData, {
+      await axios.post("http://localhost:8000/projectEn", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      alert("Мэдээ амжилттай хадгалагдлаа!");
+      alert("Мэдээлэл амжилттай хадгалагдлаа!");
       setTitle("");
       setDate("");
       setDescription("");
       setImage(null);
-      fetchNews(); // ⬅ Refresh list
+      fetchProject(); // ⬅ Refresh list
     } catch (err) {
       console.error(err);
       alert("Алдаа гарлаа");
@@ -59,31 +59,29 @@ const AdminPage: React.FC = () => {
   };
 
   // ❌ Delete news
-  const deleteNews = async (id: number) => {
-    if (!confirm("Энэ мэдээг устгах уу?")) return;
+  const deleteProject = async (id: number) => {
+    if (!confirm("Энэ мэдээлэлийг устгах уу?")) return;
 
     try {
-      await axios.delete(`http://localhost:8000/news/${id}`);
+      await axios.delete(`http://localhost:8000/projectEn/${id}`);
       alert("Устгагдлаа");
-      fetchNews(); // refresh
+      fetchProject(); // refresh
     } catch (err) {
       console.error(err);
       alert("Устгахад алдаа гарлаа");
     }
   };
- 
-
 
   return (
     <div className="max-w-4xl text-black mx-auto py-10">
 
       {/* ==================== ADD NEWS FORM ==================== */}
-      <h1 className="text-3xl font-bold mb-6">Мэдээ нэмэх монгол</h1>
+      <h1 className="text-3xl font-bold mb-6">Input project information</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4 mb-10">
         <input
           type="text"
-          placeholder="Гарчиг"
+          placeholder="Header"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="w-full p-2 border rounded"
@@ -99,7 +97,7 @@ const AdminPage: React.FC = () => {
         />
 
         <textarea
-          placeholder="Тайлбар"
+          placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="w-full p-2 border rounded"
@@ -118,45 +116,45 @@ const AdminPage: React.FC = () => {
           type="submit"
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
-          Хадгалах
+          Save
         </button>
       </form>
 
 
       {/* ==================== NEWS LIST ==================== */}
-      <h2 className="text-2xl font-bold mb-4">Мэдээний жагсаалт</h2>
+      <h2 className="text-2xl font-bold mb-4">Project List</h2>
 
-      {newsList.length === 0 ? (
-        <p>Мэдээ алга.</p>
+      {ProjectList.length === 0 ? (
+        <p>No projects.</p>
       ) : (
         <div className="space-y-4">
-          {newsList.map((news) => (
+          {ProjectList.map((Project) => (
             <div
-              key={news.id}
+              key={Project.id}
               className="border p-4 rounded flex items-start justify-between"
             >
               <div className="flex gap-4">
-                {news.image_url && (
+                {Project.image_url && (
                   <img
-                    src={`http://localhost:8000/uploads/${news.image_url}`}
-                    alt={news.title}
+                    src={`http://localhost:8000/uploadsEn/project/${Project.image_url}`}
+                    alt={Project.title}
                     className="w-32 h-24 object-cover rounded"
                   />
                 )}
 
                 <div>
-                  <h3 className="text-xl font-semibold">{news.title}</h3>
-                  <p className="text-gray-600">{news.date}</p>
-                  <p className="mt-2 text-sm">{news.description}</p>
+                  <h3 className="text-xl font-semibold">{Project.title}</h3>
+                  <p className="text-gray-600">{Project.date}</p>
+                  <p className="mt-2 text-sm">{Project.description}</p>
                 </div>
               </div>
+
               <button
-                onClick={() => deleteNews(news.id)}
+                onClick={() => deleteProject(Project.id)}
                 className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
               >
-                Устгах
+                Delete
               </button>
-              
             </div>
           ))}
         </div>
