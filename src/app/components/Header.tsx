@@ -31,13 +31,13 @@ const Header = () => {
   return (
     <header
       className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300
-        ${isHome ? (isTop ? "bg-transparent text-white text-md" : "bg-gray-700 text-white") : "bg-gray-700 text-white"}
+        ${isHome ? (isTop ? "bg-transparent text-white text-md" : "bg-[#102B5A] text-[#F5F5F5]") : "bg-gray-700 text-white"}
       `}
     >
       <div className="container mx-auto flex justify-between items-center p-4">
 
         {/* Brand / Logo */}
-        <Link href="/Home" className="text-2xl  font-bold">
+        <Link href="/Home" className="text-2xl font-bold invert brightness-50">
           <img 
             src="/Logo.png" 
             alt={translations.brand} 
@@ -52,10 +52,10 @@ const Header = () => {
             {translations.quickLinks.home}
           </Link>
 
-          <Link href="/components/About" className="hover:text-gray-200 transition flex items-center gap-2">
+          {/* <Link href="/components/About" className="hover:text-gray-200 transition flex items-center gap-2">
             <Info size={18} />
             {translations.quickLinks.about}
-          </Link>
+          </Link> */}
 
           <Link href="/components/Contact" className="hover:text-gray-200 transition flex items-center gap-2">
             <Phone size={18} />
@@ -67,7 +67,7 @@ const Header = () => {
         {/* Language Switch */}
         <button
           onClick={toggleLang}
-          className="ml-6 bg-gray-600 px-3 py-1 rounded hover:bg-gray-900 transition"
+          className="ml-6 bg-gray-700 px-3 py-1 rounded hover:bg-gray-900 transition"
         >
           {lang === "en" ? "MN" : "EN"}
         </button>

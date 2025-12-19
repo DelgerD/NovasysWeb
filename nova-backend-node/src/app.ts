@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // HTTP request logger
 app.use(morgan("dev"));
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
 
 // CORS: frontend URL болон cookie зөв дамжуулах
 app.use(

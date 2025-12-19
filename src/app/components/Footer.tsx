@@ -10,7 +10,7 @@ const Footer = () => {
   const t = lang === "en" ? en : mn;
 
   return (
-    <footer className="bg-gray-700 text-gray-300 mt-12">
+    <footer className="bg-[#102B5A] text-[#F5F5F5] mt-12">
       <div className="container mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
 
         {/* Brand / About */}
@@ -18,7 +18,7 @@ const Footer = () => {
           <img 
             src="/Logo.png" 
             alt={`${t.brand} Logo`} 
-            className="w-32 h-auto mb-3"
+            className="w-32 h-auto mb-3 invert brightness-50"
           />
 
           <p className="mt-3 text-gray-400">{t.brandDescription}</p>
@@ -64,7 +64,7 @@ const Footer = () => {
       </div>
       
       {/* Bottom Bar */}
-      <div className="border-t border-gray-700 py-4 text-center text-gray-500">
+      <div className="border-t border-gray-600 py-4 text-center text-gray-500">
         © {new Date().getFullYear()} {t.brand}. All rights reserved.
       </div>
     </footer>
