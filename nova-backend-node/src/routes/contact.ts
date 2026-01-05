@@ -10,34 +10,34 @@ router.post("/", async (req, res) => {
   if (!name || !email || !subject || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
-//    try {
-//     // 1) Nodemailer-тэй transporter үүсгэх
-//     const transporter = nodemailer.createTransport({
-//       host: "smtp.yourmail.com", // өөрийн SMTP сервер
-//       port: 587,
-//       secure: false, // TLS ашиглах бол true
-//       auth: {
-//         user: process.env.SMTP_USER,
-//         pass: process.env.SMTP_PASS,
-//       },
-//     });
+  //  try {
+  //   // 1) Nodemailer-тэй transporter үүсгэх
+  //   const transporter = nodemailer.createTransport({
+  //     host: "smtp.gmail.com", // өөрийн SMTP сервер
+  //     port: 587,
+  //     secure: false, // TLS ашиглах бол true
+  //     auth: {
+  //       user: process.env.SMTP_USER,
+  //       pass: process.env.SMTP_PASS,
+  //     },
+  //   });
 
-//     // 2) Mail options
-//     const mailOptions = {
-//       from: email, // Form-аас ирсэн хүн
-//       to: "nasaa.d@novastd.com", // Хүлээн авагч email
-//       subject: `[Contact Form] ${subject}`,
-//       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-//     };
+  //   // 2) Mail options
+  //   const mailOptions = {
+  //     from: email, // Form-аас ирсэн хүн
+  //     to: "nasaa.d@novastd.com", // Хүлээн авагч email
+  //     subject: `[Contact Form] ${subject}`,
+  //     text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+  //   };
 
-//     // 3) Илгээх
-//     await transporter.sendMail(mailOptions);
+  //   // 3) Илгээх
+  //   await transporter.sendMail(mailOptions);
 
-//     res.json({ message: "Email sent successfully" });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Failed to send email" });
-//   }
+  //   res.json({ message: "Email sent successfully" });
+  // } catch (err) {
+  //   console.error(err);
+  //   res.status(500).json({ error: "Failed to send email" });
+  // }
 
   try {
     const query = `

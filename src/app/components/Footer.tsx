@@ -24,8 +24,8 @@ const Footer = () => {
           <p className="mt-3 text-gray-400">{t.brandDescription}</p>
 
           <div className="flex space-x-4 mt-4">
-            <a href="https://twitter.com" className="hover:text-white transition">Twitter</a>
-            <a href="https://github.com" className="hover:text-white transition">GitHub</a>
+            <a href="https://Facebook.com" className="hover:text-white transition">Facebook</a>
+            <a href="https://instagram.com" className="hover:text-white transition">Instagram</a>
             <a href="https://linkedin.com" className="hover:text-white transition">LinkedIn</a>
           </div>
         </div>
@@ -55,8 +55,8 @@ const Footer = () => {
           <h3 className="text-xl font-semibold text-white mb-3">{t.quickLinks.title}</h3>
           <ul className="space-y-2">
             <li><a href="/Home" className="hover:text-white transition">{t.quickLinks.home}</a></li>
-            <li><a href="/about" className="hover:text-white transition">{t.quickLinks.about}</a></li>
-            <li><a href="/contact" className="hover:text-white transition">{t.quickLinks.contact}</a></li>
+            <li><a href="/components/About" className="hover:text-white transition">{t.quickLinks.about}</a></li>
+            <li><a href="/components/Contact" className="hover:text-white transition">{t.quickLinks.contact}</a></li>
             <li><a href="/components/login" className="hover:text-white transition">{t.quickLinks.login}</a></li>
           </ul>
         </div>

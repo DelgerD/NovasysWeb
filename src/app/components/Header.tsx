@@ -15,7 +15,7 @@ const Header = () => {
   const isHome = pathname === "/" || pathname === "/Home";
 
   const [isTop, setIsTop] = useState(true);
-
+ 
   useEffect(() => {
     if (isHome) {
       const handleScroll = () => {
@@ -27,11 +27,11 @@ const Header = () => {
       setIsTop(false); // Home биш бол тогтмол background-тэй
     }
   }, [isHome]);
-
+  
   return (
     <header
       className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300
-        ${isHome ? (isTop ? "bg-transparent text-white text-md" : "bg-[#102B5A] text-[#F5F5F5]") : "bg-gray-700 text-white"}
+        ${isHome ? (isTop ? "bg-transparent text-white text-md" : "bg-[#102B5A] text-[#F5F5F5]") : "bg-[#102B5A] text-[#F5F5F5]"}
       `}
     >
       <div className="container mx-auto flex justify-between items-center p-4">
