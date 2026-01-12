@@ -13,7 +13,9 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
-    "login": "Login"
+    "service": "Service",
+    "login": "Login",
+    "social": "Social"
   },
    "lang": "EN"
 }

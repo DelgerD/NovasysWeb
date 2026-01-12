@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLanguage } from "@/app/context/LanguageContext";
+import Link from "next/link";
 
 const heroImages = ["/1.jpg", "/2.jpg", "/3.jpg"];
 
@@ -79,7 +80,7 @@ const Home: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-gray-50 container mx-auto">
 
       {/* HERO */}
-      <section className="relative h-[600px] w-full overflow-hidden">
+      <section className="relative w-full min-h-screen">
         {heroImages.map((img, index) => (
           <img
             key={img}
@@ -92,9 +93,9 @@ const Home: React.FC = () => {
         ))}
 
         <div className="absolute inset-0 bg-opacity-50 flex flex-col items-center justify-center">
-          <h1 className="text-6xl font-extrabold text-white mb-4">NovaSys</h1>
+          <h1 className="text-6xl font-extrabold text-white mb-4">Nova Sys Std</h1>
           <p className="text-xl md:text-2xl text-white max-w-2xl text-center">
-            Leading supplier of mining equipment
+            {lang === "en" ? "Leading supplier of mining equipment" : "Уул уурхайн тоног төхөөрөмжийн тэргүүлэгч нийлүүлэгч"}
           </p>
         </div>
 
@@ -109,23 +110,79 @@ const Home: React.FC = () => {
             />
           ))}
         </div>
+      
+      
       </section>
+          
+          
+          <section className="bg-white py-20 px-4">
+            <h2 className="text-3xl text-black font-bold text-center mb-12">
+              {lang === "en" ? "Service" : "Үйлчилгээ"}
+            </h2>
 
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                
+                {
+                  title: "Хөдөлгөөнт тоног төхөөрөмжийн сэлбэг хэрэгсэл",
+                  description: "Үйлдвэрлэлийн тоног төхөөрөмжийн хөдөлгөөнт сэлбэг хэрэгслүүдийг хангана.",
+                  image: "/service1.jpg",
+                  href: "components/Service/moving-equipment"
+                  
+                },
+                {
+                  title: "Хүнд үйлдвэрийн тоног төхөөрөмжийн сэлбэг хэрэгсэл",
+                  description: "Үйлдвэрийн машины, мотор, насос зэрэг тоног төхөөрөмжийн сэлбэг хэрэгсэл.",
+                  image: "/service1.jpg",
+                  href: "/components/Service/heavy-industry"
+                },
+                {
+                  title: "Уул уурхайн тоног төхөөрөмжийн сэлбэг хэрэгсэл",
+                  description: "Экскаватор, бульдозер, уул уурхайн тоног төхөөрөмжийн эд анги, сэлбэг.",
+                  image: "/service1.jpg",
+                  href: "/components/Service/mining"
+                },
+                {
+                  title: "Барилгын материал",
+                  description: "Барилгын ажилд шаардлагатай цемент, блок, дотор заслын материал зэргийг нийлүүлнэ.",
+                  image: "/service1.jpg",
+                  href: "/components/Service/construction"
+                }
+              ].map((item, index) => (
+               <Link
+        key={index}
+        href={item.href}
+        className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+      >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-40 object-cover rounded-xl mb-4"
+                  />
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-700 text-sm mb-3">{item.description}</p>
+                  </Link>
+              ))}
+            </div>
+          </section>
+
+
+      
       {/* Latest News */}
       <section className="bg-white py-20 px-4">
         <h2 className="text-3xl text-black font-bold text-center mb-12">
           {lang === "en" ? "Latest News" : "Сүүлийн мэдээ"}
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-15">
           {news.length > 0 ? (
             news.map((item) => {
               const imageUrl =
-  item.image && item.image.trim() !== ""
-    ? lang === "en"
-      ? `http://localhost:8000/uploadsEn/${item.image}`
-      : `http://localhost:8000/uploadsMn/${item.image}`
-    : "/default-image.png";
+                item.image && item.image.trim() !== ""
+                  ? lang === "en"
+                    ? `http://localhost:8000/uploadsEn/${item.image}`
+                    : `http://localhost:8000/uploadsMn/${item.image}`
+                  : "/default-image.png";
 
               return (
                 <div
@@ -136,7 +193,7 @@ const Home: React.FC = () => {
                   <img
                     src={imageUrl}
                     alt={item.title}
-                    className="w-full h-48 object-cover rounded-xl mb-4"
+                    className="w-full h-40 object-cover rounded-xl mb-4"
                   />
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-gray-700 line-clamp-3 mb-3">{item.description}</p>
@@ -150,7 +207,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Recent Projects */}
+      {/* Recent Projects
       <section className="bg-white py-20 px-4 mt-4">
         <h2 className="text-3xl text-black font-bold text-center mb-12">
           {lang === "en" ? "Recent Projects" : "Сүүлийн төслүүд"}
@@ -187,7 +244,7 @@ const Home: React.FC = () => {
             <p className="text-center col-span-3">No projects available</p>
           )}
         </div>
-      </section>
+      </section> */}
 
       {/* Modal for News */}
       {selectedNews && (
@@ -245,9 +302,27 @@ const Home: React.FC = () => {
           </div>
         )}
 
+         <section className="bg-gradient-to-r from-amber-200 to-amber-300 py-20">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#102b5a] mb-4 drop-shadow-md">
+            {lang === "en" ? "Let’s Build the Future Together" : "Ирээдүйг хамтдаа бүтээцгээе"}
+          </h2>
+          <p className="text-gray-700 mb-8 text-lg md:text-xl">
+            {lang === "en" ? "Get in touch to discuss your mining projects and equipment needs." : 
+          "Уул уурхайн төслүүд болон тоног төхөөрөмжийн хэрэгцээний талаар ярилцахын тулд бидэнтэй холбогдоно уу."}
+          </p>
+          <Link
+            href="/components/Contact"
+            className="px-10 py-4 rounded-2xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 text-white font-semibold shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+          >
+             {lang === "en" ? "Contact Us" : "Холбоо барих"}
+          </Link>
+        </div>
+      </section>
 
     </div>
   );
 };
 
 export default Home;
+  

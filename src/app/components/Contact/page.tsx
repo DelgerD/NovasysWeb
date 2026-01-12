@@ -2,7 +2,11 @@
 "use client";
 import { Bold } from "lucide-react";
 import React, { useState } from "react";
+import axios from "axios";
 import { text } from "stream/consumers";
+import { useLanguage } from "@/app/context/LanguageContext";
+
+
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +15,7 @@ const Contact: React.FC = () => {
     subject: "",
     message: "",
   });
-
+  const { lang } = useLanguage();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -39,24 +43,25 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 container mx-auto">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
-        <h1 className="text-4xl font-bold text-black mb-4 text-center">Contact Us</h1>
+        <h1 className="text-4xl font-bold text-black mb-4 text-center">{lang === "en" ? "Contact us" : "Бидэнтэй холбогдох"}</h1>
         <p className="text-gray-700 text-center mb-8">
-          Reach out to NovaSys for any inquiries, project discussions, or support regarding mining equipment.
+          {lang === "en" ? "Reach out to Nova Sys Std for any inquiries, project discussions, or support regarding mining equipment." : 
+          "Уул уурхайн тоног төхөөрөмжтэй холбоотой аливаа лавлагаа, төслийн хэлэлцүүлэг эсвэл дэмжлэг авахыг хүсвэл Nova Sys Std-тэй холбогдоно уу."}
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Information */}
           <div className="space-y-4 text-black">
             <div>
-              <h3 className="text-black font-semibold text-lg">Address:</h3>
-              <p >Chinggis Ave Building #90, HUD - 3 khoroo, Ulaanbaatar 17060</p>
+              <h3 className="text-black font-semibold text-lg">{lang === "en" ? "Address:" : "Хаяг:"}</h3>
+              <p >{lang === "en" ? "Chinggis Ave Building #90, HUD - 3 khoroo, Ulaanbaatar 17060" : "Чингисийн өргөн чөлөө 90-р байр, ХУД - 3 хороо, Улаанбаатар 17060"}</p>
             </div>
             <div>
-              <h3 className=" text-black font-semibold text-lg">Phone:</h3>
+              <h3 className=" text-black font-semibold text-lg">{lang === "en" ? "Phone:" : "Утасны дугаар:"}</h3>
               <p>+976 9999-8888</p>
             </div>
             <div>
-              <h3 className="text-black font-semibold text-lg">Email:</h3>
+              <h3 className="text-black font-semibold text-lg">{lang === "en" ? "Email:" : "И-мэйл:"}</h3>
               <p>Sales@novastd.com</p>
             </div>
 
@@ -82,7 +87,7 @@ const Contact: React.FC = () => {
                 color="black"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your Name"
+                placeholder={lang === "en" ? "Your name:" : "Таны нэр"}
                 className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-ring-black"
                 required
               />
@@ -91,7 +96,7 @@ const Contact: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Your Email"
+                placeholder={lang === "en" ? "Your email:" : "Таны и-мэйл"}
                 className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-black"
                 required
               />
@@ -100,7 +105,7 @@ const Contact: React.FC = () => {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="Subject"
+                placeholder={lang === "en" ? "Subject:" : "Гарчиг"}
                 className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-ring-black"
                 required
               />
@@ -108,7 +113,7 @@ const Contact: React.FC = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Your Message"
+                placeholder={lang === "en" ? "Your message:" : "Таны мессеж"}
                 className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-ring-black"
                 rows={5}
                 required
@@ -117,7 +122,7 @@ const Contact: React.FC = () => {
                 type="submit"
                 className="w-full bg-[#102B5A] text-white p-3 rounded font-semibold hover:bg-gray-900 transition"
               >
-                Send Message
+                {lang === "en" ? "Send message:" : "Мессеж илгээх"}
               </button>
             </form>
           </div>

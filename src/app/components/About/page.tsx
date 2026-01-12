@@ -1,7 +1,10 @@
 // src/pages/about.tsx
+"use client";
 import React from "react";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 const About: React.FC = () => {
+  const { lang } = useLanguage();
   return (
     <div className="min-h-screen bg-gray-50">
 
@@ -9,10 +12,11 @@ const About: React.FC = () => {
       <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">
-            About <span className="">NovaSys</span>
+            About <span className="">Nova Sys Std</span>
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
-            Trusted partner in mining equipment, industrial solutions, and operational excellence.
+            {lang === "en" ? "Trusted partner in mining equipment, industrial solutions, and operational excellence." : 
+            "Уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн шийдэл, үйл ажиллагааны шилдэг байдлын найдвартай түнш."}
           </p>
         </div>
       </section>
@@ -20,17 +24,17 @@ const About: React.FC = () => {
       {/* COMPANY OVERVIEW */}
       <section className="py-24 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-          Who We Are
+          {lang === "en" ? "Who Whe Are" : "Бид хэн бэ ?"}
         </h2>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
           <div className="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
             <h3 className="text-xl font-semibold mb-4 text-gray-900">
-              Experience & Reliability
+              {lang === "en" ? "Experience & Reliability" : "Туршлага ба Найдвартай байдал"}
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              With over 15 years of experience, NovaSys delivers reliable mining
-              equipment and industrial technologies tailored for modern operations.
+              {lang === "en" ? "With over 15 years of experience, Nova Sys Std delivers reliable mining equipment and industrial technologies tailored for modern operations." : 
+              "15 гаруй жилийн туршлагатай Nova Sys Std нь орчин үеийн үйл ажиллагаанд тохирсон найдвартай уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн технологийг нийлүүлдэг."}
             </p>
           </div>
 
@@ -39,8 +43,8 @@ const About: React.FC = () => {
               End-to-End Solutions
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              From heavy machinery supply to consulting and maintenance, we
-              support your projects from planning to execution.
+              {lang === "en" ? "From heavy machinery supply to consulting and maintenance, we support your projects from planning to execution." : 
+              "Хүнд машин механизмын хангамжаас эхлээд зөвлөгөө, засвар үйлчилгээ хүртэл бид таны төслүүдийг төлөвлөлтөөс эхлээд хэрэгжүүлэх хүртэл дэмждэг."}
             </p>
           </div>
         </div>
@@ -50,7 +54,7 @@ const About: React.FC = () => {
       <section className="bg-gray-100 py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
-            Our Equipment & Solutions
+            {lang === "en" ? "Our Equipment & Solutions" : "Манай тоног төхөөрөмж ба шийдлүүд"}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -87,27 +91,27 @@ const About: React.FC = () => {
       {/* MISSION & VISION */}
       <section className="py-24 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
-          Mission & Vision
+          {lang === "en" ? "Mission & Vision" : "Эрхэм зорилго ба алсын хараа"}
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-blue-500">
             <h3 className="text-xl font-semibold mb-2 text-gray-900">
-              Our Mission
+              {lang === "en" ? "Our Mission" : "Бидний эрхэм зорилго"}
             </h3>
             <p className="text-gray-700">
-              To deliver innovative, reliable, and safe mining equipment that
-              improves productivity and operational efficiency.
+              {lang === "en" ? "To deliver innovative, reliable, and safe mining equipment that improves productivity and operational efficiency." : 
+              "Бүтээмж болон үйл ажиллагааны үр ашгийг дээшлүүлэх шинэлэг, найдвартай, аюулгүй уул уурхайн тоног төхөөрөмжийг нийлүүлэх."}
             </p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-green-500">
             <h3 className="text-xl font-semibold mb-2 text-gray-900">
-              Our Vision
+              {lang === "en" ? "Our Vision" : "Бидний алсын хараа"}
             </h3>
             <p className="text-gray-700">
-              To become a globally recognized partner for mining companies,
-              known for quality, sustainability, and service excellence.
+              {lang === "en" ? "To become a globally recognized partner for mining companies, known for quality, sustainability, and service excellence." : 
+              "Чанар, тогтвортой байдал, үйлчилгээний шилдэг чанараараа алдартай, дэлхий даяар хүлээн зөвшөөрөгдсөн уул уурхайн компаниудын түнш болох."}
             </p>
           </div>
         </div>
@@ -116,17 +120,18 @@ const About: React.FC = () => {
       {/* CALL TO ACTION */}
       <section className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-24 text-center">
         <h2 className="text-3xl font-bold mb-6">
-          Let’s Build the Future Together
+          {lang === "en" ? "Let’s Build the Future Together" : "Ирээдүйг хамтдаа бүтээцгээе"}
         </h2>
         <p className="text-gray-300 mb-10">
-          Get in touch to discuss your mining projects and equipment needs.
+          {lang === "en" ? "Get in touch to discuss your mining projects and equipment needs." : 
+          "Уул уурхайн төслүүд болон тоног төхөөрөмжийн хэрэгцээний талаар ярилцахын тулд бидэнтэй холбогдоно уу."}
         </p>
 
         <a
           href="/components/Contact"
           className="inline-block px-8 py-4 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition"
         >
-          Contact Us
+          {lang === "en" ? "Contact Us" : "Холбоо барих"}
         </a>
       </section>
 
