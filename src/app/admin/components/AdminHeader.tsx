@@ -27,8 +27,8 @@ export default function AdminHeader() {
         <Link href="/admin/components/NewsEn" className="hover:text-gray-200 transition">NewsEnglish</Link>
         <Link href="/admin/User" className="hover:text-gray-200 transition">Add Admin</Link>
         <Link href="/admin/contact" className="hover:text-gray-200 transition">Contacts</Link>
-        <Link href="/admin/components/projectEn" className="hover:text-gray-200 transition">ProjectEn</Link>
-        <Link href="/admin/components/projectMn" className="hover:text-gray-200 transition">ProjectMn</Link>
+        {/* <Link href="/admin/components/projectEn" className="hover:text-gray-200 transition">ProjectEn</Link>
+        <Link href="/admin/components/projectMn" className="hover:text-gray-200 transition">ProjectMn</Link> */}
         <button
           onClick={handleLogout}
           className="ml-4 bg-red-500 px-3 py-1 rounded hover:bg-red-600"

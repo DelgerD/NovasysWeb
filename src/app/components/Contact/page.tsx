@@ -23,22 +23,27 @@ const Contact: React.FC = () => {
  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
-    const res = await fetch("http://localhost:8000/contacts", {
+    // URL-ийн төгсгөлд / нэмээд үзээрэй
+    const res = await fetch("http://localhost:8000/contacts/", { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
-    if (!res.ok) throw new Error("Failed to send message");
+    const data = await res.json();
 
-    alert("Message sent successfully!");
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to send message");
+    }
+
+    alert("Амжилттай илгээгдлээ!");
     setFormData({ name: "", email: "", subject: "", message: "" });
-  } catch (err) {
-    console.error(err);
-    alert("Something went wrong. Please try again.");
+  } catch (err: any) {
+    console.error("Fetch error:", err);
+    // Алдааны мессежийг хэрэглэгчид илүү тодорхой харуулах
+    alert(err.message || "Something went wrong. Please try again.");
   }
 };
-
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 container mx-auto">

@@ -14,7 +14,7 @@ const MiningPage: React.FC = () => {
         <div className="relative container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           
           <div>
-            <h1 className="text-5xl md:text-6xl font-extrabold text-[#102B5A] mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-[#102B5A] mb-6 leading-tight">
               {lang === "en" ? "Mining Solutions" : "Уул уурхайн шийдлүүд"}
             </h1>
             <div className="w-20 h-1 bg-[#102B5A] mb-6" />

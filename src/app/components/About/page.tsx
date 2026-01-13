@@ -1,4 +1,3 @@
-// src/pages/about.tsx
 "use client";
 import React from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -6,15 +5,15 @@ import { useLanguage } from "@/app/context/LanguageContext";
 const About: React.FC = () => {
   const { lang } = useLanguage();
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
 
       {/* HERO */}
-      <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-32">
+      <section className="relative bg-gradient-to-r from-amber-200 to-amber-300 text-[#102B5A] py-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">
             About <span className="">Nova Sys Std</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto text-[#102B5A]/80">
             {lang === "en" ? "Trusted partner in mining equipment, industrial solutions, and operational excellence." : 
             "Уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн шийдэл, үйл ажиллагааны шилдэг байдлын найдвартай түнш."}
           </p>
@@ -23,13 +22,13 @@ const About: React.FC = () => {
 
       {/* COMPANY OVERVIEW */}
       <section className="py-24 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-          {lang === "en" ? "Who Whe Are" : "Бид хэн бэ ?"}
+        <h2 className="text-3xl font-bold text-center text-[#102B5A] mb-12">
+          {lang === "en" ? "Who We Are" : "Бид хэн бэ ?"}
         </h2>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
           <div className="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-semibold mb-4 text-[#102B5A]">
               {lang === "en" ? "Experience & Reliability" : "Туршлага ба Найдвартай байдал"}
             </h3>
             <p className="text-gray-700 leading-relaxed">
@@ -39,8 +38,8 @@ const About: React.FC = () => {
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">
-              End-to-End Solutions
+            <h3 className="text-xl font-semibold mb-4 text-[#102B5A]">
+              {lang === "en" ? "End-to-End Solutions" : "Эцсийн шийдэл"}
             </h3>
             <p className="text-gray-700 leading-relaxed">
               {lang === "en" ? "From heavy machinery supply to consulting and maintenance, we support your projects from planning to execution." : 
@@ -51,9 +50,9 @@ const About: React.FC = () => {
       </section>
 
       {/* EQUIPMENT & SOLUTIONS */}
-      <section className="bg-gray-100 py-24">
+      <section className="bg-gray-50 py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
+          <h2 className="text-3xl font-bold text-center text-[#102B5A] mb-14">
             {lang === "en" ? "Our Equipment & Solutions" : "Манай тоног төхөөрөмж ба шийдлүүд"}
           </h2>
 
@@ -76,7 +75,7 @@ const About: React.FC = () => {
                 key={i}
                 className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
               >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-[#102B5A] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-gray-700">
@@ -90,13 +89,13 @@ const About: React.FC = () => {
 
       {/* MISSION & VISION */}
       <section className="py-24 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
+        <h2 className="text-3xl font-bold text-center text-[#102B5A] mb-14">
           {lang === "en" ? "Mission & Vision" : "Эрхэм зорилго ба алсын хараа"}
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-8">
-          <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-blue-500">
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">
+          <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-amber-300">
+            <h3 className="text-xl font-semibold mb-2 text-[#102B5A]">
               {lang === "en" ? "Our Mission" : "Бидний эрхэм зорилго"}
             </h3>
             <p className="text-gray-700">
@@ -105,8 +104,8 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-green-500">
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">
+          <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-amber-300">
+            <h3 className="text-xl font-semibold mb-2 text-[#102B5A]">
               {lang === "en" ? "Our Vision" : "Бидний алсын хараа"}
             </h3>
             <p className="text-gray-700">
@@ -118,18 +117,18 @@ const About: React.FC = () => {
       </section>
 
       {/* CALL TO ACTION */}
-      <section className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-24 text-center">
+      <section className="bg-gradient-to-r from-amber-200 to-amber-300 text-[#102B5A] py-24 text-center">
         <h2 className="text-3xl font-bold mb-6">
           {lang === "en" ? "Let’s Build the Future Together" : "Ирээдүйг хамтдаа бүтээцгээе"}
         </h2>
-        <p className="text-gray-300 mb-10">
+        <p className="text-[#102B5A]/70 mb-10">
           {lang === "en" ? "Get in touch to discuss your mining projects and equipment needs." : 
           "Уул уурхайн төслүүд болон тоног төхөөрөмжийн хэрэгцээний талаар ярилцахын тулд бидэнтэй холбогдоно уу."}
         </p>
 
         <a
           href="/components/Contact"
-          className="inline-block px-8 py-4 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition"
+          className="inline-block px-8 py-4 bg-white text-[#102B5A] font-semibold rounded-full hover:bg-gray-100 transition"
         >
           {lang === "en" ? "Contact Us" : "Холбоо барих"}
         </a>
