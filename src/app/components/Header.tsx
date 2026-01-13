@@ -49,7 +49,7 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/Home" className="flex items-center gap-2 hover:text-gray-500 transition">
+          <Link href="/Home" className="flex items-center duration-0 gap-2 hover:text-gray-500 transition">
             <Home size={18} />
             {translations.quickLinks.home}
           </Link>
@@ -86,12 +86,12 @@ const Header = () => {
             </div>
           </div>
 
-          <Link href="/components/About" className="flex items-center gap-2 hover:text-gray-500 transition">
+          <Link href="/components/About" className="flex items-center duration-0 gap-2 hover:text-gray-500 transition">
             <Info size={18} />
             {translations.quickLinks.about}
           </Link>
 
-          <Link href="/components/Contact" className="flex items-center gap-2 hover:text-gray-500 transition">
+          <Link href="/components/Contact" className="flex items-center duration-0 gap-2 hover:text-gray-500 transition">
             <Phone size={18} />
             {translations.quickLinks.contact}
           </Link>

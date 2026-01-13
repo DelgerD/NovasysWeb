@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#102B5A] text-[#F5F5F5] mt-12">
-      <div className="container mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container mx-auto py-10 px-4  grid grid-cols-1 md:grid-cols-3 gap-8">
 
         {/* Brand / About */}
         <div>
@@ -21,8 +21,8 @@ const Footer = () => {
             alt={`${t.brand} Logo`} 
             className="w-32 h-auto mb-3 invert brightness-50"
           />
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-3">{t.contact}</h3>
+        <div className="m-5">
+          {/* <h3 className="text-xl font-semibold text-white mb-3">{t.contact}</h3> */}
 
           <div className="flex items-center space-x-3 mb-2">
             <Phone size={20} />
@@ -62,7 +62,7 @@ const Footer = () => {
     <ul className="space-y-2">
       <li className="flex items-center gap-2">
         <Facebook size={20} className="text-white" />
-        <a href="https://facebook.com" className="hover:text-white transition">
+        <a href="https://www.facebook.com/profile.php?id=61579717915984" className="hover:text-white transition">
           Facebook
         </a>
       </li>

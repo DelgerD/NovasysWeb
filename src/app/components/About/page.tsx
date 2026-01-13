@@ -1,139 +1,162 @@
 "use client";
 import React from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { Award, Users, Globe, Rocket, Eye, ArrowRight, ShieldCheck } from "lucide-react";
 
 const About: React.FC = () => {
   const { lang } = useLanguage();
-  return (
-    <div className="min-h-screen bg-white">
 
-      {/* HERO */}
-      <section className="relative bg-gradient-to-r from-amber-200 to-amber-300 text-[#102B5A] py-32">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">
-            About <span className="">Nova Sys Std</span>
+  const stats = [
+    { label: lang === "en" ? "Years Experience" : "Жилийн туршлага", value: "15+", icon: <Award className="w-5 h-5" /> },
+    { label: lang === "en" ? "Experts" : "Мэргэжилтнүүд", value: "50+", icon: <Users className="w-5 h-5" /> },
+    { label: lang === "en" ? "Projects Done" : "Төсөл хэрэгжүүлсэн", value: "200+", icon: <ShieldCheck className="w-5 h-5" /> },
+    { label: lang === "en" ? "Global Partners" : "Түнш байгууллага", value: "12", icon: <Globe className="w-5 h-5" /> },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white font-sans">
+      
+      {/* HERO SECTION */}
+      <section className="relative py-32 overflow-hidden bg-[#102B5A]">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 -left-20 w-[600px] h-[600px] bg-amber-400 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-blue-500 rounded-full blur-[150px]" />
+        </div>
+
+        <div className="relative container mx-auto px-6 text-center">
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full">
+            {lang === "en" ? "About Our Company" : "Компанийн тухай"}
+          </span>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight">
+            Nova <span className="text-amber-400">Sys Std</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto text-[#102B5A]/80">
-            {lang === "en" ? "Trusted partner in mining equipment, industrial solutions, and operational excellence." : 
-            "Уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн шийдэл, үйл ажиллагааны шилдэг байдлын найдвартай түнш."}
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100/80 leading-relaxed">
+            {lang === "en" 
+              ? "A global leader in mining equipment, industrial engineering, and operational excellence." 
+              : "Уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн инженерчлэл, үйл ажиллагааны шилдэг байдлын дэлхийн жишиг түнш."}
           </p>
         </div>
       </section>
 
-      {/* COMPANY OVERVIEW */}
-      <section className="py-24 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-[#102B5A] mb-12">
-          {lang === "en" ? "Who We Are" : "Бид хэн бэ ?"}
-        </h2>
-
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-          <div className="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
-            <h3 className="text-xl font-semibold mb-4 text-[#102B5A]">
-              {lang === "en" ? "Experience & Reliability" : "Туршлага ба Найдвартай байдал"}
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              {lang === "en" ? "With over 15 years of experience, Nova Sys Std delivers reliable mining equipment and industrial technologies tailored for modern operations." : 
-              "15 гаруй жилийн туршлагатай Nova Sys Std нь орчин үеийн үйл ажиллагаанд тохирсон найдвартай уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн технологийг нийлүүлдэг."}
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
-            <h3 className="text-xl font-semibold mb-4 text-[#102B5A]">
-              {lang === "en" ? "End-to-End Solutions" : "Эцсийн шийдэл"}
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              {lang === "en" ? "From heavy machinery supply to consulting and maintenance, we support your projects from planning to execution." : 
-              "Хүнд машин механизмын хангамжаас эхлээд зөвлөгөө, засвар үйлчилгээ хүртэл бид таны төслүүдийг төлөвлөлтөөс эхлээд хэрэгжүүлэх хүртэл дэмждэг."}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* EQUIPMENT & SOLUTIONS */}
-      <section className="bg-gray-50 py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-[#102B5A] mb-14">
-            {lang === "en" ? "Our Equipment & Solutions" : "Манай тоног төхөөрөмж ба шийдлүүд"}
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Excavators & Loaders",
-                desc: "High-performance machinery designed for efficiency and durability."
-              },
-              {
-                title: "Crushing & Processing",
-                desc: "Advanced systems for crushing, processing, and material handling."
-              },
-              {
-                title: "Maintenance & Consulting",
-                desc: "Expert support to maximize uptime and operational safety."
-              }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
-              >
-                <h3 className="text-xl font-semibold text-[#102B5A] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-700">
-                  {item.desc}
-                </p>
+      {/* STATS BAR */}
+      <section className="relative -mt-16 container mx-auto px-6 z-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          {stats.map((stat, i) => (
+            <div key={i} className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-[#102B5A] mb-4">
+                {stat.icon}
               </div>
-            ))}
+              <div className="text-3xl font-bold text-[#102B5A] mb-1">{stat.value}</div>
+              <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* WHO WE ARE */}
+      <section className="py-24 container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#102B5A] mb-8">
+              {lang === "en" ? "Excellence in Every Operation" : "Үйл ажиллагаа бүрийн төгс гүйцэтгэл"}
+            </h2>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p>
+                {lang === "en" 
+                  ? "With over 15 years of industry leadership, Nova Sys Std has evolved into a multi-sector powerhouse, delivering precision-engineered solutions for the most challenging environments." 
+                  : "15 гаруй жилийн салбарын туршлагатай Nova Sys Std нь хамгийн хүнд нөхцөлд ч нарийн инженерчлэлийн шийдлүүдийг нийлүүлдэг олон салбарт тэргүүлэгч хүчин болон өргөжсөн."}
+              </p>
+              <p>
+                {lang === "en" 
+                  ? "Our approach combines heavy machinery expertise with strategic consulting to ensure your projects move from blueprint to reality with maximum efficiency." 
+                  : "Бид хүнд машин механизмын туршлагыг стратегийн зөвлөх үйлчилгээтэй хослуулж, таны төслийг төлөвлөгөөнөөс бодит байдал руу хамгийн өндөр үр ашигтайгаар шилжүүлдэг."}
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-6">
+             <div className="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:shadow-lg transition">
+                <h3 className="text-xl font-bold text-[#102B5A] mb-4 flex items-center gap-3">
+                  <div className="w-2 h-8 bg-amber-400 rounded-full" />
+                  {lang === "en" ? "Experience & Reliability" : "Туршлага ба Найдвартай байдал"}
+                </h3>
+                <p className="text-gray-600">
+                  {lang === "en" ? "Trusted by tier-1 mining companies for delivering consistent results under extreme conditions." : "Хүнд нөхцөлд тогтвортой үр дүн үзүүлдэг тул дэлхийн шилдэг уул уурхайн компаниудын итгэлийг хүлээсэн."}
+                </p>
+             </div>
+             <div className="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:shadow-lg transition">
+                <h3 className="text-xl font-bold text-[#102B5A] mb-4 flex items-center gap-3">
+                   <div className="w-2 h-8 bg-amber-400 rounded-full" />
+                   {lang === "en" ? "End-to-End Support" : "Иж бүрэн дэмжлэг"}
+                </h3>
+                <p className="text-gray-600">
+                  {lang === "en" ? "From sourcing and logistics to onsite maintenance, we provide a full lifecycle support for your assets." : "Хангамж, ложистикоос эхлээд газар дээрх засвар үйлчилгээ хүртэл бид таны хөрөнгийн иж бүрэн мөчлөгийг дэмждэг."}
+                </p>
+             </div>
           </div>
         </div>
       </section>
 
-      {/* MISSION & VISION */}
-      <section className="py-24 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-[#102B5A] mb-14">
-          {lang === "en" ? "Mission & Vision" : "Эрхэм зорилго ба алсын хараа"}
-        </h2>
+      {/* MISSION & VISION - MODERN BENTO */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-12 rounded-[3rem] shadow-sm relative overflow-hidden group">
+              <Rocket className="w-16 h-16 text-amber-400/20 absolute -top-4 -right-4 group-hover:scale-110 transition duration-500" />
+              <div className="w-12 h-12 bg-amber-400 rounded-2xl flex items-center justify-center text-[#102B5A] mb-8">
+                <Rocket className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#102B5A] mb-4">
+                {lang === "en" ? "Our Mission" : "Бидний эрхэм зорилго"}
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                {lang === "en" 
+                  ? "To deliver innovative, reliable, and safe industrial solutions that empower our partners to achieve peak productivity while respecting the environment." 
+                  : "Байгаль орчноо дээдлэн, хамтрагч нартаа бүтээмжийн дээд цэгт хүрэх боломжийг олгох шинэлэг, найдвартай, аюулгүй үйлдвэрлэлийн шийдлүүдийг нийлүүлэх."}
+              </p>
+            </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-amber-300">
-            <h3 className="text-xl font-semibold mb-2 text-[#102B5A]">
-              {lang === "en" ? "Our Mission" : "Бидний эрхэм зорилго"}
-            </h3>
-            <p className="text-gray-700">
-              {lang === "en" ? "To deliver innovative, reliable, and safe mining equipment that improves productivity and operational efficiency." : 
-              "Бүтээмж болон үйл ажиллагааны үр ашгийг дээшлүүлэх шинэлэг, найдвартай, аюулгүй уул уурхайн тоног төхөөрөмжийг нийлүүлэх."}
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow border-l-4 border-amber-300">
-            <h3 className="text-xl font-semibold mb-2 text-[#102B5A]">
-              {lang === "en" ? "Our Vision" : "Бидний алсын хараа"}
-            </h3>
-            <p className="text-gray-700">
-              {lang === "en" ? "To become a globally recognized partner for mining companies, known for quality, sustainability, and service excellence." : 
-              "Чанар, тогтвортой байдал, үйлчилгээний шилдэг чанараараа алдартай, дэлхий даяар хүлээн зөвшөөрөгдсөн уул уурхайн компаниудын түнш болох."}
-            </p>
+            <div className="bg-[#102B5A] p-12 rounded-[3rem] shadow-xl relative overflow-hidden group">
+              <Eye className="w-16 h-16 text-white/10 absolute -top-4 -right-4 group-hover:scale-110 transition duration-500" />
+              <div className="w-12 h-12 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center text-amber-400 mb-8">
+                <Eye className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                {lang === "en" ? "Our Vision" : "Бидний алсын хараа"}
+              </h3>
+              <p className="text-blue-100/70 text-lg leading-relaxed">
+                {lang === "en" 
+                  ? "To become the most trusted global partner in industrial infrastructure, recognized for our commitment to sustainability and technological mastery." 
+                  : "Тогтвортой хөгжил болон технологийн ур чадвараараа танигдсан, үйлдвэрлэлийн дэд бүтцийн салбарт дэлхийн хамгийн найдвартай түнш болох."}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CALL TO ACTION */}
-      <section className="bg-gradient-to-r from-amber-200 to-amber-300 text-[#102B5A] py-24 text-center">
-        <h2 className="text-3xl font-bold mb-6">
-          {lang === "en" ? "Let’s Build the Future Together" : "Ирээдүйг хамтдаа бүтээцгээе"}
-        </h2>
-        <p className="text-[#102B5A]/70 mb-10">
-          {lang === "en" ? "Get in touch to discuss your mining projects and equipment needs." : 
-          "Уул уурхайн төслүүд болон тоног төхөөрөмжийн хэрэгцээний талаар ярилцахын тулд бидэнтэй холбогдоно уу."}
-        </p>
-
-        <a
-          href="/components/Contact"
-          className="inline-block px-8 py-4 bg-white text-[#102B5A] font-semibold rounded-full hover:bg-gray-100 transition"
-        >
-          {lang === "en" ? "Contact Us" : "Холбоо барих"}
-        </a>
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="relative rounded-[3rem] bg-gradient-to-r from-amber-200 to-amber-400 overflow-hidden p-12 md:p-20 text-center">
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#102B5A] mb-8">
+                {lang === "en" ? "Ready to Build the Future?" : "Ирээдүйг хамтдаа бүтээх үү?"}
+              </h2>
+              <p className="text-lg text-[#102B5A]/80 mb-12 font-medium">
+                {lang === "en" 
+                  ? "Join hands with Nova Sys Std for industrial solutions that set new standards in efficiency and safety." 
+                  : "Үр ашиг болон аюулгүй ажиллагааны шинэ стандартыг тогтоож буй Nova Sys Std-тэй хамтран ажиллана уу."}
+              </p>
+              <a
+                href="/components/Contact"
+                className="inline-flex items-center gap-3 px-12 py-5 bg-[#102B5A] text-white font-bold rounded-2xl shadow-2xl hover:bg-[#102B5A]/90 transition-all hover:scale-105 active:scale-95"
+              >
+                {lang === "en" ? "Contact Our Team" : "Манай багтай холбогдох"}
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
-
     </div>
   );
 };
