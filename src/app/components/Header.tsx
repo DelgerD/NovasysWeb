@@ -2,8 +2,8 @@
 import { Home, Info, Phone, Hammer, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
-import en from "@/app/locales/en.json";
-import mn from "@/app/locales/mn.json";
+import en from '../locales/en.json';
+import mn from '../locales/mn.json';
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 

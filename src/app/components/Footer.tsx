@@ -2,8 +2,8 @@
 
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/app/context/LanguageContext";
-import en from "@/app/locales/en.json";
-import mn from "@/app/locales/mn.json";
+import en from '../locales/en.json';
+import mn from '../locales/mn.json';
 import {  Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
