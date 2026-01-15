@@ -2,15 +2,11 @@
 import { Home, Info, Phone, Hammer, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
-import en from '../locales/en.json';
-import mn from '../locales/mn.json';
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
   const { lang, toggleLang } = useLanguage();
-  const translations = lang === "en" ? en : mn;
-
   const pathname = usePathname();
   const isHome = pathname === "/" || pathname === "/Home";
 
@@ -40,7 +36,7 @@ const Header = () => {
         <Link href="/Home" className="text-2xl font-bold">
           <img
             src="/Logo.png"
-            alt={translations.brand}
+            alt={lang === "en" ? "NovaSys Logo" : "NovaSys Лого"}
             className={`w-32 h-auto transition-all duration-300 ${
               isHome && isTop ? "invert brightness-50" : ""
             }`}
@@ -49,37 +45,37 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/Home" className="flex items-center duration-0 gap-2 hover:text-gray-500 transition">
+          <Link href="/Home" className="flex items-center gap-2 duration-0 hover:text-gray-500 transition">
             <Home size={18} />
-            {translations.quickLinks.home}
+            {lang === "en" ? "Home" : "Нүүр"}
           </Link>
 
           <div className="relative group">
             <button className="flex items-center gap-2 hover:text-gray-500 transition">
               <Hammer size={18} />
-              {translations.quickLinks.service}
+              {lang === "en" ? "Service" : "Үйлчилгээ"}
             </button>
             {/* Dropdown menu */}
             <div className="absolute top-full left-0 mt-2 w-64 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
               <ul className="flex flex-col">
                 <li>
                   <Link href="/components/Service/mining" className="block px-4 py-2 hover:bg-gray-100">
-                    Уул уурхай
+                    {lang === "en" ? "Mining" : "Уул уурхай"}
                   </Link>
                 </li>
                 <li>
                   <Link href="/components/Service/heavy-industry" className="block px-4 py-2 hover:bg-gray-100">
-                    Хүнд үйлдвэр
+                    {lang === "en" ? "Heavy Industry" : "Хүнд үйлдвэр"}
                   </Link>
                 </li>
                 <li>
                   <Link href="/components/Service/moving-industry" className="block px-4 py-2 hover:bg-gray-100">
-                    Авто сэлбэг
+                    {lang === "en" ? "Auto Parts" : "Авто сэлбэг"}
                   </Link>
                 </li>
                 <li>
                   <Link href="/components/Service/construction" className="block px-4 py-2 hover:bg-gray-100">
-                    Барилгын материал
+                    {lang === "en" ? "Construction Materials" : "Барилгын материал"}
                   </Link>
                 </li>
               </ul>
@@ -88,12 +84,12 @@ const Header = () => {
 
           <Link href="/components/About" className="flex items-center duration-0 gap-2 hover:text-gray-500 transition">
             <Info size={18} />
-            {translations.quickLinks.about}
+            {lang === "en" ? "About" : "Бидний тухай"}
           </Link>
 
           <Link href="/components/Contact" className="flex items-center duration-0 gap-2 hover:text-gray-500 transition">
             <Phone size={18} />
-            {translations.quickLinks.contact}
+            {lang === "en" ? "Contact" : "Холбоо барих"}
           </Link>
 
           {/* Language Switch */}
@@ -122,37 +118,37 @@ const Header = () => {
           <ul className="flex flex-col p-4 space-y-2">
             <li>
               <Link href="/Home" className="block px-2 py-2 hover:bg-gray-100">
-                {translations.quickLinks.home}
+                {lang === "en" ? "Home" : "Нүүр"}
               </Link>
             </li>
             <li>
               <Link href="/components/Service/mining" className="block px-2 py-2 hover:bg-gray-100">
-                Уул уурхай
+                {lang === "en" ? "Mining" : "Уул уурхай"}
               </Link>
             </li>
             <li>
               <Link href="/components/Service/heavy-industry" className="block px-2 py-2 hover:bg-gray-100">
-                Хүнд үйлдвэр
+                {lang === "en" ? "Heavy Industry" : "Хүнд үйлдвэр"}
               </Link>
             </li>
             <li>
               <Link href="/components/Service/moving-industry" className="block px-2 py-2 hover:bg-gray-100">
-                Авто сэлбэг
+                {lang === "en" ? "Auto Parts" : "Авто сэлбэг"}
               </Link>
             </li>
             <li>
               <Link href="/components/Service/construction" className="block px-2 py-2 hover:bg-gray-100">
-                Барилгын материал
+                {lang === "en" ? "Construction Materials" : "Барилгын материал"}
               </Link>
             </li>
             <li>
               <Link href="/components/About" className="block px-2 py-2 hover:bg-gray-100">
-                {translations.quickLinks.about}
+                {lang === "en" ? "About" : "Бидний тухай"}
               </Link>
             </li>
             <li>
               <Link href="/components/Contact" className="block px-2 py-2 hover:bg-gray-100">
-                {translations.quickLinks.contact}
+                {lang === "en" ? "Contact" : "Холбоо барих"}
               </Link>
             </li>
             <li>
@@ -171,9 +167,3 @@ const Header = () => {
 };
 
 export default Header;
-
-//NUUR , UILCHILGEE ,bidnii tuhai , HOLBOO BARIH 
-//hUDULgoont tonog tohooromjiin selbeg heregsel 
-// Hund uildveriin tonog tohooromojiin selbeg heregsel 
-// uul uurhain tonog tohooromjiin --
-// barilgiin material 
