@@ -109,7 +109,7 @@ const Home: React.FC = () => {
               title: lang === "en" ? "Moving Equipment" : "Хөдөлгөөнт тоног төхөөрөмж",
               desc: lang === "en" ? "Precision parts for mobile industrial machinery." : "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх.",
               icon: <Truck className="w-7 h-7" />,
-              href: "/components/Service/moving-equipment",
+              href: "/components/Service/moving-industry",
               color: "bg-blue-50"
             },
             {

@@ -73,7 +73,7 @@ const HeavyIndustryPage: React.FC = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-amber-400 to-amber-200 rounded-[2rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
             <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-2xl">
               <h3 className="text-2xl font-bold text-white mb-8">
-                {lang === "en" ? "Core Competencies" : "Бидний давуу тал"}
+                {lang === "en" ? "Additionally" : "Нэмэлтээр"}
               </h3>
               <div className="space-y-6">
                 {[
