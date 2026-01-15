@@ -71,8 +71,8 @@ const Home: React.FC = () => {
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
               {lang === "en" 
-                ? "Global excellence in mining equipment and industrial engineering solutions." 
-                : "Уул уурхайн тоног төхөөрөмж болон үйлдвэрлэлийн инженерийн шилдэг шийдэл."}
+                ? "World-class solutions." 
+                : "Дэлхийн жишигт нийцсэн шийдэл."}
             </p>
             <div className="flex flex-wrap justify-center gap-5">
               <Link href="/components/About" className="px-10 py-4 bg-amber-400 hover:bg-amber-500 text-[#102B5A] font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1">

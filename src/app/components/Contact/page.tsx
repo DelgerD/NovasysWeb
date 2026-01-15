@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-[#102B5A] text-sm uppercase tracking-tighter">{lang === "en" ? "Call Us" : "Утас"}</h4>
-                    <p className="text-gray-500 text-sm mt-1">+976 9999-8888</p>
+                    <p className="text-gray-500 text-sm mt-1">+976 89808252</p>
                   </div>
                 </div>
 

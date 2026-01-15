@@ -32,8 +32,8 @@ const About: React.FC = () => {
           </h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100/80 leading-relaxed">
             {lang === "en" 
-              ? "A global leader in mining equipment, industrial engineering, and operational excellence." 
-              : "Уул уурхайн тоног төхөөрөмж, үйлдвэрлэлийн инженерчлэл, үйл ажиллагааны шилдэг байдлын дэлхийн жишиг түнш."}
+              ? "World-Class Solutions." 
+              : "Дэлхийн жишигт нийцсэн шийдэл."}
           </p>
         </div>
       </section>
@@ -106,14 +106,16 @@ const About: React.FC = () => {
                 <Rocket className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-[#102B5A] mb-4">
-                {lang === "en" ? "Our Mission" : "Бидний эрхэм зорилго"}
+                {lang === "en" ? "Our Objective" : "Бидний эрхэм зорилт"}
               </h3>
               <p className="text-gray-600 text-lg leading-relaxed">
                 {lang === "en" 
-                  ? "To deliver innovative, reliable, and safe industrial solutions that empower our partners to achieve peak productivity while respecting the environment." 
-                  : "Байгаль орчноо дээдлэн, хамтрагч нартаа бүтээмжийн дээд цэгт хүрэх боломжийг олгох шинэлэг, найдвартай, аюулгүй үйлдвэрлэлийн шийдлүүдийг нийлүүлэх."}
+                  ? "Deliver world-class spare parts solutions to Mongolia’s mining industry with unmatched reliability, quality, and service by 2028." 
+                  : "2028 он гэхэд дэлхийн жишигт нийцсэн найдвартай, чанар сэлбэг болон тоног төхөөрөмжийн шийдлүүд, түүний засвар үйлчилгээтэй хамт цогцоор нь монголын уул уурхайн салбарт үзүүлхээр зорьж байна."}
               </p>
             </div>
+            
+            
 
             <div className="bg-[#102B5A] p-12 rounded-[3rem] shadow-xl relative overflow-hidden group">
               <Eye className="w-16 h-16 text-white/10 absolute -top-4 -right-4 group-hover:scale-110 transition duration-500" />
@@ -121,13 +123,28 @@ const About: React.FC = () => {
                 <Eye className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                {lang === "en" ? "Our Vision" : "Бидний алсын хараа"}
+                {lang === "en" ? "Our Goals" : "Бидний зорилго"}
               </h3>
-              <p className="text-blue-100/70 text-lg leading-relaxed">
-                {lang === "en" 
-                  ? "To become the most trusted global partner in industrial infrastructure, recognized for our commitment to sustainability and technological mastery." 
-                  : "Тогтвортой хөгжил болон технологийн ур чадвараараа танигдсан, үйлдвэрлэлийн дэд бүтцийн салбарт дэлхийн хамгийн найдвартай түнш болох."}
-              </p>
+              <div className="text-blue-100/70 text-lg leading-relaxed">
+                {lang === "en" ? (
+                  <ul className="list-decimal pl-5 space-y-2">
+                    <li>Achieve annual sales revenue of 1.2B MNT</li>
+                    <li>Expand strategic partnerships to at least three partners</li>
+                    <li>Secure official distributor status with Donaldson</li>
+                    <li>Obtain official distributor certification from CITIC HIC</li>
+                    <li>Become an authorized distributor for MI Motion</li>
+                  </ul>
+                ) : (
+                  <ul className="list-decimal pl-5 space-y-2">
+                    <li>1.2 тэрбум төгрөгийн борлуулалт хийх</li>
+                    <li>Хамтран ажиллагч байгууллагын тоог 3-т хүргэнэ</li>
+                    <li>Donaldson-ий албан ёсны дистрибьютор болох</li>
+                    <li>CITIC HIC-ийн албан ёсны дистрибьютор болох</li>
+                    <li>MI Motion-ий гэрээт борлуулагч болох</li>
+                  </ul>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
