@@ -126,24 +126,25 @@ const About: React.FC = () => {
                 {lang === "en" ? "Our Goals" : "Бидний зорилго"}
               </h3>
               <div className="text-blue-100/70 text-lg leading-relaxed">
-                {lang === "en" ? (
-                  <ul className="list-decimal pl-5 space-y-2">
-                    <li>Achieve annual sales revenue of 1.2B MNT</li>
-                    <li>Expand strategic partnerships to at least three partners</li>
-                    <li>Secure official distributor status with Donaldson</li>
-                    <li>Obtain official distributor certification from CITIC HIC</li>
-                    <li>Become an authorized distributor for MI Motion</li>
-                  </ul>
-                ) : (
-                  <ul className="list-decimal pl-5 space-y-2">
-                    <li>1.2 тэрбум төгрөгийн борлуулалт хийх</li>
-                    <li>Хамтран ажиллагч байгууллагын тоог 3-т хүргэнэ</li>
-                    <li>Donaldson-ий албан ёсны дистрибьютор болох</li>
-                    <li>CITIC HIC-ийн албан ёсны дистрибьютор болох</li>
-                    <li>MI Motion-ий гэрээт борлуулагч болох</li>
-                  </ul>
-                )}
-              </div>
+                  {lang === "en" ? (
+                    <ul className="list-decimal pl-5 space-y-2">
+                      <li>Establish a reliable supply chain for world-class mining spare parts in Mongolia</li>
+                      <li>Build long-term partnerships with leading global manufacturers</li>
+                      <li>Achieve official distributor and certification status from internationally recognized brands</li>
+                      <li>Provide integrated spare parts, equipment, and maintenance solutions</li>
+                      <li>Enhance customer trust through consistent quality, service excellence, and technical support</li>
+                    </ul>
+                  ) : (
+                    <ul className="list-decimal pl-5 space-y-2">
+                      <li>Монголын уул уурхайн салбарт дэлхийн жишигт нийцсэн найдвартай сэлбэгийн нийлүүлэлтийн сүлжээг бүрдүүлэх</li>
+                      <li>Олон улсын тэргүүлэгч үйлдвэрлэгчидтэй урт хугацааны стратегийн түншлэл бий болгох</li>
+                      <li>Олон улсад хүлээн зөвшөөрөгдсөн брэндүүдийн албан ёсны дистрибьютор, сертификаттай болох</li>
+                      <li>Сэлбэг, тоног төхөөрөмж, засвар үйлчилгээний нэгдсэн цогц шийдэл санал болгох</li>
+                      <li>Чанар, найдвартай байдал, мэргэжлийн үйлчилгээгээр харилцагчдын итгэлийг нэмэгдүүлэх</li>
+                    </ul>
+                  )}
+                </div>
+
 
             </div>
           </div>
