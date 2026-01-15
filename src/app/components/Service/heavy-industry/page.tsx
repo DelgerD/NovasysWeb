@@ -11,16 +11,16 @@ const HeavyIndustryPage: React.FC = () => {
    {
       en: "Mining Solutions",
       mn: "Уул уурхай",
-      descEn: "Mining equipment parts.",
-      descMn: "Уул уурхайн тоног төхөөрөмж эд анги.",
+      descEn: "Mining equipment parts",
+      descMn: "Уул уурхайн тоног төхөөрөмж тэдгээрийн эд анги",
       icon: <HardHat className="w-6 h-6" />,
       href: "/components/Service/mining"
     },
     {
       en: "Moving Equipment",
       mn: "Хөдөлгөөнт тоног төхөөрөмж",
-      descEn: "Precision parts for mobile industrial machinery.",
-      descMn: "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх.",
+      descEn: "Precision parts for mobile industrial machinery",
+      descMn: "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх",
       icon: <Truck className="w-6 h-6" />,
       href: "/components/Service/moving-industry"
     },
@@ -28,8 +28,8 @@ const HeavyIndustryPage: React.FC = () => {
     {
       en: "Construction",
       mn: "Барилга",
-      descEn: "Materials and raw materials required for construction work.",
-      descMn: "Барилгын ажилд шаардлагатай материал болон түүхий эд.",
+      descEn: "Materials and raw materials required for construction work",
+      descMn: "Барилгын ажилд шаардлагатай материал болон түүхий эд",
       icon: <Construction className="w-6 h-6" />,
       href: "/components/Service/construction"
     },

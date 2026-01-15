@@ -7,10 +7,10 @@ const About: React.FC = () => {
   const { lang } = useLanguage();
 
   const stats = [
-    { label: lang === "en" ? "Years Experience" : "Жилийн туршлага", value: "15+", icon: <Award className="w-5 h-5" /> },
-    { label: lang === "en" ? "Experts" : "Мэргэжилтнүүд", value: "50+", icon: <Users className="w-5 h-5" /> },
-    { label: lang === "en" ? "Projects Done" : "Төсөл хэрэгжүүлсэн", value: "200+", icon: <ShieldCheck className="w-5 h-5" /> },
-    { label: lang === "en" ? "Global Partners" : "Түнш байгууллага", value: "12", icon: <Globe className="w-5 h-5" /> },
+    { label: lang === "en" ? "Years Experience" : "Жилийн туршлага", value: "10+", icon: <Award className="w-5 h-5" /> },
+    { label: lang === "en" ? "Experts" : "Мэргэжилтнүүд", value: "20+", icon: <Users className="w-5 h-5" /> },
+    { label: lang === "en" ? "Product brand" : "Бүтээгдэхүүний бранд", value: "200+", icon: <ShieldCheck className="w-5 h-5" /> },
+    { label: lang === "en" ? "Collaborating organization" : "Хамтран ажиллагч байгууллага", value: "20+", icon: <Globe className="w-5 h-5" /> },
   ];
 
   return (
@@ -63,14 +63,14 @@ const About: React.FC = () => {
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
                 {lang === "en" 
-                  ? "With over 15 years of industry leadership, Nova Sys Std has evolved into a multi-sector powerhouse, delivering precision-engineered solutions for the most challenging environments." 
-                  : "15 гаруй жилийн салбарын туршлагатай Nova Sys Std нь хамгийн хүнд нөхцөлд ч нарийн инженерчлэлийн шийдлүүдийг нийлүүлдэг олон салбарт тэргүүлэгч хүчин болон өргөжсөн."}
+                  ? "With 10+, the Nova Sys Std team will provide the most reliable engineering solutions for the most demanding loads, and will provide a comprehensive range of high-quality manufacturing, installation, and maintenance services." 
+                  : "10+ жилийн туршлагатай Nova Sys Std-ийн хамт олон нь хамгийн хүнд нөхцөлд ч найдвартай ажиллах инженерчлэлийн шийдлүүдийг түншлэгч байгуулгууддаа нийлүүлдэг ба эдгээрийн угсралт суурьлуулалт, засвар үйлчилгээг чанарын өндөр төвшөнд цогцоор нь үзүүлдэг болно.."}
               </p>
-              <p>
+              {/* <p>
                 {lang === "en" 
                   ? "Our approach combines heavy machinery expertise with strategic consulting to ensure your projects move from blueprint to reality with maximum efficiency." 
                   : "Бид хүнд машин механизмын туршлагыг стратегийн зөвлөх үйлчилгээтэй хослуулж, таны төслийг төлөвлөгөөнөөс бодит байдал руу хамгийн өндөр үр ашигтайгаар шилжүүлдэг."}
-              </p>
+              </p> */}
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6">

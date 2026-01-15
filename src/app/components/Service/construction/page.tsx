@@ -11,24 +11,24 @@ const ConstructionPage: React.FC = () => {
     {
       en: "Mining Solutions",
       mn: "Уул уурхай",
-      descEn: "Mining equipment parts.",
-      descMn: "Уул уурхайн тоног төхөөрөмж эд анги.",
+      descEn: "Mining equipment parts",
+      descMn: "Уул уурхайн тоног төхөөрөмж тэдгээрийн эд анги",
       icon: <HardHat className="w-6 h-6" />,
       href: "/components/Service/mining"
     },
      {
       en: "Heavy Industry",
       mn: "Хүнд үйлдвэр",
-      descEn: "Provide spare parts and accessory maintenance services.",
-      descMn: "Хүнд үйлдвэрийн тоног төхөөрөмж: Мотор, хурдны хайрцаг, холбох эд анги, насос, эдгээрийн сэлбэг хэрэгсэл.",
+      descEn: "Provide spare parts and accessory maintenance services",
+      descMn: "Хүнд үйлдвэрийн тоног төхөөрөмж: Мотор, хурдны хайрцаг, холбох эд анги, насос, эдгээрийн сэлбэг хэрэгсэл",
       icon: <Settings className="w-6 h-6" />,
       href: "/components/Service/heavy-industry"
     },
     {
       en: "Moving Equipment",
       mn: "Хөдөлгөөнт тоног төхөөрөмж",
-      descEn: "Precision parts for mobile industrial machinery.",
-      descMn: "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх.",
+      descEn: "Precision parts for mobile industrial machinery",
+      descMn: "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх",
       icon: <Truck className="w-6 h-6" />,
       href: "/components/Service/moving-industry"
     },
@@ -53,7 +53,7 @@ const ConstructionPage: React.FC = () => {
               {lang === "en" ? (
                 <>Constructing <span className="text-amber-400">Future</span> Landmarks</>
               ) : (
-                <>Ирээдүйн <span className="text-amber-400">Үнэ Цэнийг</span> Бүтээнэ</>
+                <>Ирээдүйн Үнэ <span className="text-amber-400"> Цэнийг Бүтээнэ</span> </>
               )}
             </h1>
             <p className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
@@ -76,10 +76,10 @@ const ConstructionPage: React.FC = () => {
               </h3>
               <div className="space-y-6">
                 {[
-                  { t: lang === "en" ? "Assembly installation" : "Угсралт суурилуулалт", d: "Eco-friendly Mining" },
-                  { t: lang === "en" ? "Provide training on how to use and repair" : "Ашиглах бол засварлах сургалт үзүүлэх", d: "ISO Certified Standards" },
-                  { t: lang === "en" ? "Prepare BOM or bill of materials" : "BOM буюу сэлбэгийн задаргаа бэлдэж өгөх", d: "Next-gen Machinery" },
-                  { t: lang === "en" ? "Update maintenance plans and reliability results" : "Засварын төлөвлөгөө болон найдвартай ажиллагааны дүн шинэжилгээ хийх", d: "Eco-friendly Mining" }
+                  { t: lang === "en" ? "Assembly installation" : "Угсралт суурилуулалт", d: lang === "en" ? "Fast and reliable" : "Хурдан шуурхай, найдвартай"},
+                  { t: lang === "en" ? "Provide training on how to use and repair" : "Ашиглах бол засварлах сургалт үзүүлэх",  d: lang === "en" ? "Manufacturer's instructions and recommendations" : "Үйлдвэрлэгчийн заавар зөвлөмж" },
+                  { t: lang === "en" ? "Prepare BOM or bill of materials" : "BOM буюу сэлбэгийн задаргаа бэлдэж өгөх", d: lang === "en" ? "Easy to understand" : "Ойлгомжтой, хялбар" },
+                  { t: lang === "en" ? "Update maintenance plans and reliability results" : "Засварын төлөвлөгөө болон найдвартай ажиллагааны дүн шинэжилгээ хийх", d: lang === "en" ? "Reliable, easy" : "Найдвартай, хялбар" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4">
                     <div className="mt-1 bg-amber-400/20 p-1.5 rounded-full">

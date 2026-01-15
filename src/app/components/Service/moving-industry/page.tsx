@@ -11,24 +11,24 @@ const MovingIndustryPage: React.FC = () => {
     {
       en: "Mining Solutions",
       mn: "Уул уурхай",
-      descEn: "Mining equipment parts.",
-      descMn: "Уул уурхайн тоног төхөөрөмж эд анги.",
+      descEn: "Mining equipment parts",
+      descMn: "Уул уурхайн тоног төхөөрөмж эд анги",
       icon: <HardHat className="w-6 h-6" />,
       href: "/components/Service/mining"
     },
     {
       en: "Heavy Industry",
       mn: "Хүнд үйлдвэр",
-      descEn: "Provide spare parts and accessory maintenance services.",
-      descMn: "Хүнд үйлдвэрийн тоног төхөөрөмж: Мотор, хурдны хайрцаг, холбох эд анги, насос, эдгээрийн сэлбэг хэрэгсэл.",
+      descEn: "Provide spare parts and accessory maintenance services",
+      descMn: "Хүнд үйлдвэрийн тоног төхөөрөмж: Мотор, хурдны хайрцаг, холбох эд анги, насос, эдгээрийн сэлбэг хэрэгсэл",
       icon: <Settings className="w-6 h-6" />,
       href: "/components/Service/heavy-industry"
     },
     {
       en: "Construction",
       mn: "Барилга",
-      descEn: "Materials and raw materials required for construction work.",
-      descMn: "Барилгын ажилд шаардлагатай материал болон түүхий эд.",
+      descEn: "Materials and raw materials required for construction work",
+      descMn: "Барилгын ажилд шаардлагатай материал болон түүхий эд",
       icon: <Construction className="w-6 h-6" />,
       href: "/components/Service/construction"
     },
@@ -53,7 +53,7 @@ const MovingIndustryPage: React.FC = () => {
               {lang === "en" ? (
                 <>Premium <span className="text-amber-400">Auto Parts</span> Solutions</>
               ) : (
-                <>Авто Сэлбэгийн <span className="text-amber-400">Шилдэг</span> Шийдэл</>
+                <>Авто  <span className="text-amber-400">Сэлбэгийн</span> <span className="text-amber-400">Шилдэг</span> Шийдэл</>
               )}
             </h1>
             <p className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
@@ -76,10 +76,10 @@ const MovingIndustryPage: React.FC = () => {
               </h3>
               <div className="space-y-6">
                 {[
-                   { t: lang === "en" ? "Assembly installation" : "Угсралт суурилуулалт", d: "Eco-friendly Mining" },
-                  { t: lang === "en" ? "Provide training on how to use and repair" : "Ашиглах бол засварлах сургалт үзүүлэх", d: "ISO Certified Standards" },
-                  { t: lang === "en" ? "Prepare BOM or bill of materials" : "BOM буюу сэлбэгийн задаргаа бэлдэж өгөх", d: "Next-gen Machinery" },
-                  { t: lang === "en" ? "Update maintenance plans and reliability results" : "Засварын төлөвлөгөө болон найдвартай ажиллагааны дүн шинэжилгээ хийх", d: "Eco-friendly Mining" }
+                   { t: lang === "en" ? "Assembly installation" : "Угсралт суурилуулалт", d: lang === "en" ? "Fast and reliable" : "Хурдан шуурхай, найдвартай"},
+                  { t: lang === "en" ? "Provide training on how to use and repair" : "Ашиглах бол засварлах сургалт үзүүлэх",  d: lang === "en" ? "Manufacturer's instructions and recommendations" : "Үйлдвэрлэгчийн заавар зөвлөмж" },
+                  { t: lang === "en" ? "Prepare BOM or bill of materials" : "BOM буюу сэлбэгийн задаргаа бэлдэж өгөх", d: lang === "en" ? "Easy to understand" : "Ойлгомжтой, хялбар" },
+                  { t: lang === "en" ? "Update maintenance plans and reliability results" : "Засварын төлөвлөгөө болон найдвартай ажиллагааны дүн шинэжилгээ хийх", d: lang === "en" ? "Reliable, easy" : "Найдвартай, хялбар" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4">
                     <CheckCircle2 className="w-6 h-6 text-amber-400 mt-1" />
