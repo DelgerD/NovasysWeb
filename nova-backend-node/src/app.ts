@@ -41,11 +41,11 @@ app.use(
   })
 );
 app.use("/uploadsMn", cors({
-    origin: ["http://localhost:3000", "http://192.168.160.1:3000"],
+    origin: ["http://localhost:3000", "https://novasysweb.onrender.com"],
   }), express.static("uploadsMn"));
 
 app.use("/uploadsEn", cors({
-    origin: ["http://localhost:3000", "http://192.168.160.1:3000"],
+    origin: ["http://localhost:3000", "https://novasysweb.onrender.com"],
   }), express.static("uploadsEn"));
 
 

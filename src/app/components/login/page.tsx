@@ -14,7 +14,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8000/admin/login",
+        "https://novasysweb.onrender.com/admin/login",
         { email, password },
         { withCredentials: true } // cookie дамжуулах чухал
       );
