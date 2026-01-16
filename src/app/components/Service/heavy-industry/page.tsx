@@ -77,10 +77,10 @@ const HeavyIndustryPage: React.FC = () => {
               </h3>
               <div className="space-y-6">
                 {[
-                 { t: lang === "en" ? "Assembly installation" : "Угсралт суурилуулалт", d: "Eco-friendly Mining" },
-                  { t: lang === "en" ? "Provide training on how to use and repair" : "Ашиглах бол засварлах сургалт үзүүлэх", d: "ISO Certified Standards" },
-                  { t: lang === "en" ? "Prepare BOM or bill of materials" : "BOM буюу сэлбэгийн задаргаа бэлдэж өгөх", d: "Next-gen Machinery" },
-                  { t: lang === "en" ? "Update maintenance plans and reliability results" : "Засварын төлөвлөгөө болон найдвартай ажиллагааны дүн шинэжилгээ хийх", d: "Eco-friendly Mining" }
+                  { t: lang === "en" ? "Assembly installation" : "Угсралт суурилуулалт", d: lang === "en" ? "Fast and reliable" : "Хурдан шуурхай, найдвартай"},
+                  { t: lang === "en" ? "Provide training on how to use and repair" : "Ашиглах бол засварлах сургалт үзүүлэх",  d: lang === "en" ? "Manufacturer's instructions and recommendations" : "Үйлдвэрлэгчийн заавар зөвлөмж" },
+                  { t: lang === "en" ? "Prepare BOM or bill of materials" : "BOM буюу сэлбэгийн задаргаа бэлдэж өгөх", d: lang === "en" ? "Easy to understand" : "Ойлгомжтой, хялбар" },
+                  { t: lang === "en" ? "Update maintenance plans and reliability results" : "Засварын төлөвлөгөө болон найдвартай ажиллагааны дүн шинэжилгээ хийх", d: lang === "en" ? "Reliable, easy" : "Найдвартай, хялбар" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4">
                     <div className="mt-1 bg-amber-400/20 p-2 rounded-lg">
