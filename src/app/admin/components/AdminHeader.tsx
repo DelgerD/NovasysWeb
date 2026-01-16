@@ -9,7 +9,7 @@ export default function AdminHeader() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/admin/logout",
+        "http://https://novasysweb.onrender.com/admin/logout",
         {},
         { withCredentials: true } // HTTP-only cookie-г устгахын тулд
       );

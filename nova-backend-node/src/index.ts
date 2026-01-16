@@ -14,7 +14,7 @@ async function start() {
 
     // 2) Start server
     app.listen(PORT, () => {
-      console.log(`Server listening on http://localhost:${PORT}`);
+      console.log(`Server listening on https://novasysweb.onrender.com`);
     });
   } catch (err) {
     console.error("Failed to start server:", err);

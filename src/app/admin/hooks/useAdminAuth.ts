@@ -11,7 +11,7 @@ export function useAdminAuth() {
   useEffect(() => {
     const checkAdmin = async () => {
       try {
-        await axios.get("http://localhost:8000/admin/me", { withCredentials: true });
+        await axios.get("http://https://novasysweb.onrender.com/admin/me", { withCredentials: true });
         setLoading(false); // admin
       } catch (err) {
         router.push("/login"); // admin биш бол login руу

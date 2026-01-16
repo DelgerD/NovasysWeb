@@ -28,7 +28,7 @@ const AdminContacts: React.FC = () => {
       if (filter && startDate) params.start = startDate;
       if (filter && endDate) params.end = endDate;
 
-      const res = await axios.get<Contact[]>("http://localhost:8000/contacts", { params });
+      const res = await axios.get<Contact[]>("http://https://novasysweb.onrender.com/contacts", { params });
 
       setContacts(res.data);
       setError(null);
@@ -119,7 +119,7 @@ const AdminContacts: React.FC = () => {
             onClick={async () => {
               if (!confirm("Are you sure you want to delete this message?")) return;
               try {
-                await axios.delete(`http://localhost:8000/contacts/${c.id}`);
+                await axios.delete(`http://https://novasysweb.onrender.com/contacts/${c.id}`);
                 // Delete хийсний дараа contact list-ийг refresh хийх
                 setContacts((prev) => prev.filter((contact) => contact.id !== c.id));
               } catch (err) {

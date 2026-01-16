@@ -35,17 +35,17 @@ app.use(morgan("dev"));
 // CORS: frontend URL болон cookie зөв дамжуулах
 app.use(
   cors({
-    origin: "http://localhost:3000", // frontend URL
+    origin: "https://novastd.com", // frontend URL
     credentials: true,               // cookie дамжуулах
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 app.use("/uploadsMn", cors({
-    origin: ["http://localhost:3000", "https://novasysweb.onrender.com"],
+    origin: ["http://localhost:3000", "https://novastd.com/"],
   }), express.static("uploadsMn"));
 
 app.use("/uploadsEn", cors({
-    origin: ["http://localhost:3000", "https://novasysweb.onrender.com"],
+    origin: ["http://localhost:3000", "https://novastd.com/"],
   }), express.static("uploadsEn"));
 
 

@@ -24,7 +24,7 @@ const NewsPage: React.FC = () => {
     const fetchNews = async () => {
       try {
         setLoading(true);
-        const endpoint = lang === "en" ? "http://localhost:8000/newsEn" : "http://localhost:8000/news";
+        const endpoint = lang === "en" ? "http://https://novasysweb.onrender.com/newsEn" : "http://https://novasysweb.onrender.com/news";
         const response = await axios.get<NewsItem[]>(endpoint);
         setNews(response.data);
       } catch (err) {
@@ -84,7 +84,7 @@ const NewsPage: React.FC = () => {
                 {/* Image Wrapper */}
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={item.image ? (lang === "en" ? `http://localhost:8000/uploadsEn/${item.image}` : `http://localhost:8000/uploadsMn/${item.image}`) : "/default-image.png"}
+                    src={item.image ? (lang === "en" ? `http://https://novasysweb.onrender.com/uploadsEn/${item.image}` : `http://https://novasysweb.onrender.com/uploadsMn/${item.image}`) : "/default-image.png"}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                   />
@@ -138,7 +138,7 @@ const NewsPage: React.FC = () => {
             {/* Modal Image */}
             <div className="h-[300px] md:h-[450px] w-full relative">
               <img
-                src={selectedNews.image ? (lang === "en" ? `http://localhost:8000/uploadsEn/${selectedNews.image}` : `http://localhost:8000/uploadsMn/${selectedNews.image}`) : "/default-image.png"}
+                src={selectedNews.image ? (lang === "en" ? `http://https://novasysweb.onrender.com/uploadsEn/${selectedNews.image}` : `http://https://novasysweb.onrender.com/uploadsMn/${selectedNews.image}`) : "/default-image.png"}
                 alt={selectedNews.title}
                 className="w-full h-full object-cover"
               />
