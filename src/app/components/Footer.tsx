@@ -1,7 +1,7 @@
 "use client";
 
 import { Phone, Mail, MapPin } from "lucide-react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer: React.FC = () => {

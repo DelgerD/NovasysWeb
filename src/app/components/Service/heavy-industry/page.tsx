@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../../../context/LanguageContext";
 import { Truck, Construction, HardHat, Cpu, ArrowRight, Cog, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 

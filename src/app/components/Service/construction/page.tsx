@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../../../context/LanguageContext";
 import { HardHat, Home, Truck, Settings, ArrowRight, Building2, CheckCircle } from "lucide-react";
 import Link from "next/link";
+
 
 const ConstructionPage: React.FC = () => {
   const { lang } = useLanguage();

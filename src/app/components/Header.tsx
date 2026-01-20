@@ -1,7 +1,7 @@
 "use client";
 import { Home, Info, Phone, Hammer, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 

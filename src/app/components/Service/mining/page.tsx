@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+
 import { Settings, Truck, Construction, Leaf, ArrowRight, Activity } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const MiningPage: React.FC = () => {
   const { lang } = useLanguage();

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 import { Calendar, ArrowRight, Search, Newspaper, X, ChevronRight } from "lucide-react";
 
 interface NewsItem {

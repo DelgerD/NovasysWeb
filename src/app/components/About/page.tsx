@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 import { Award, Users, Globe, Rocket, Eye, ArrowRight, ShieldCheck } from "lucide-react";
 
 const About: React.FC = () => {

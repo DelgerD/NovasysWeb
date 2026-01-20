@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "../../../context/LanguageContext";
 import { Settings, ShieldCheck, Zap, Lightbulb, ArrowRight, HardHat, CheckCircle2,Construction } from "lucide-react";
 import Link from "next/link";
 
