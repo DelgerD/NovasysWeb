@@ -27,5 +27,6 @@ export function middleware(req: NextRequest) {
 
 // Middleware-г зөв route дээр ажиллуулах
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [],
 };
+// "/admin/:path*"
