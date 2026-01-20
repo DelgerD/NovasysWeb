@@ -18,6 +18,7 @@ const LoginPage = () => {
         { email, password },
         { withCredentials: true } // cookie дамжуулах чухал
       );
+      console.log("Login successful, redirecting...");
       router.push("/admin"); // амжилттай login бол admin руу
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");
