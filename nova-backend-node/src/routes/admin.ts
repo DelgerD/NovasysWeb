@@ -40,7 +40,7 @@ router.post("/login", async (req: Request, res: Response) => {
     // Cookie-д хадгалах
     res.cookie("admin_token", token, {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       secure: true, // production-д true
       maxAge: 24 * 60 * 60 * 1000,
     });
