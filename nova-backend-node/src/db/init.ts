@@ -4,12 +4,16 @@ import { PoolClient } from "pg";
 // src/db/init.ts
 import { Pool } from "pg";
 
+// export const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "NovaSys",
+//   password: "123",
+//   port: 5432,
+// });
 export const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "NovaSys",
-  password: "123",
-  port: 5432,
+  connectionString: process.env.DATABASE_URL, // <- Supabase connection string
+  ssl: { rejectUnauthorized: false },        // Supabase шаарддаг
 });
 
 export async function initDb(): Promise<void> {
