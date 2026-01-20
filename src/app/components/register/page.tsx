@@ -14,7 +14,7 @@ const AdminUsers: React.FC = () => {
     setMessage(null);
 
     try {
-      const res = await axios.post("http://https://novasysweb.onrender.com/users", {
+      const res = await axios.post("https://novasysweb.onrender.com/users", {
         email,
         password,
         full_name: fullName,

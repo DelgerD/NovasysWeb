@@ -35,7 +35,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const endpoint = lang === "en" ? "http://https://novasysweb.onrender.com/newsEn" : "http://https://novasysweb.onrender.com/news";
+        const endpoint = lang === "en" ? "https://novasysweb.onrender.com/newsEn" : "https://novasysweb.onrender.com/news";
         const response = await axios.get<NewsItem[]>(endpoint);
         setNews(response.data.slice(0, 3)); // Display latest 3
       } catch (err) {
@@ -168,7 +168,7 @@ const Home: React.FC = () => {
                 <div key={item.id} onClick={() => setSelectedNews(item)} className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-pointer">
                   <div className="h-64 overflow-hidden relative">
                     <img 
-                      src={item.image ? (lang === "en" ? `http://https://novasysweb.onrender.com/uploadsEn/${item.image}` : `http://https://novasysweb.onrender.com/uploadsMn/${item.image}`) : "/default-image.png"} 
+                      src={item.image ? (lang === "en" ? `https://novasysweb.onrender.com/uploadsEn/${item.image}` : `https://novasysweb.onrender.com/uploadsMn/${item.image}`) : "/default-image.png"} 
                       alt={item.title} 
                       className="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
                     />
@@ -221,7 +221,7 @@ const Home: React.FC = () => {
               <ChevronLeft className="w-6 h-6" />
             </button>
             <div className="h-80 md:h-96 w-full">
-               <img src={selectedNews.image ? (lang === "en" ? `http://https://novasysweb.onrender.com/uploadsEn/${selectedNews.image}` : `http://https://novasysweb.onrender.com/uploadsMn/${selectedNews.image}`) : "/default-image.png"} alt={selectedNews.title} className="w-full h-full object-cover" />
+               <img src={selectedNews.image ? (lang === "en" ? `https://novasysweb.onrender.com/uploadsEn/${selectedNews.image}` : `https://novasysweb.onrender.com/uploadsMn/${selectedNews.image}`) : "/default-image.png"} alt={selectedNews.title} className="w-full h-full object-cover" />
             </div>
             <div className="p-10">
               <span className="text-amber-500 font-bold text-sm mb-4 block">{new Date(selectedNews.date).toLocaleDateString()}</span>

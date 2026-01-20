@@ -22,7 +22,7 @@ const AdminPage: React.FC = () => {
   // 🔥 Fetch all news on load
   const fetchProject = async () => {
     try {
-      const res = await axios.get("http://https://novasysweb.onrender.com/projectMn");
+      const res = await axios.get("https://novasysweb.onrender.com/projectMn");
       setProjectList(res.data);
     } catch (err) {
       console.error("Failed to fetch project:", err);
@@ -43,7 +43,7 @@ const AdminPage: React.FC = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.post("http://https://novasysweb.onrender.com/projectMn", formData, {
+      await axios.post("https://novasysweb.onrender.com/projectMn", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Мэдээлэл амжилттай хадгалагдлаа!");
@@ -63,7 +63,7 @@ const AdminPage: React.FC = () => {
     if (!confirm("Энэ мэдээлэлийг устгах уу?")) return;
 
     try {
-      await axios.delete(`http://https://novasysweb.onrender.com/projectMn/${id}`);
+      await axios.delete(`https://novasysweb.onrender.com/projectMn/${id}`);
       alert("Устгагдлаа");
       fetchProject(); // refresh
     } catch (err) {
@@ -136,7 +136,7 @@ const AdminPage: React.FC = () => {
               <div className="flex gap-4">
                 {Project.image_url && (
                   <img
-                    src={`http://https://novasysweb.onrender.com/uploadsMn/project/${Project.image_url}`}
+                    src={`https://novasysweb.onrender.com/uploadsMn/project/${Project.image_url}`}
                     alt={Project.title}
                     className="w-32 h-24 object-cover rounded"
                   />

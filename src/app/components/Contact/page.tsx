@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const res = await fetch("http://https://novasysweb.onrender.com/contacts/", {
+      const res = await fetch("https://novasysweb.onrender.com/contacts/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

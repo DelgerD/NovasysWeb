@@ -22,7 +22,7 @@ const AdminPage: React.FC = () => {
   // 🔥 Fetch all news on load
   const fetchNews = async () => {
     try {
-      const res = await axios.get("http://https://novasysweb.onrender.com/news");
+      const res = await axios.get("https://novasysweb.onrender.com/news");
       setNewsList(res.data);
     } catch (err) {
       console.error("Failed to fetch news:", err);
@@ -43,7 +43,7 @@ const AdminPage: React.FC = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.post("http://https://novasysweb.onrender.com/news", formData, {
+      await axios.post("https://novasysweb.onrender.com/news", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Мэдээ амжилттай хадгалагдлаа!");
@@ -63,7 +63,7 @@ const AdminPage: React.FC = () => {
     if (!confirm("Энэ мэдээг устгах уу?")) return;
 
     try {
-      await axios.delete(`http://https://novasysweb.onrender.com/news/${id}`);
+      await axios.delete(`https://novasysweb.onrender.com/news/${id}`);
       alert("Устгагдлаа");
       fetchNews(); // refresh
     } catch (err) {
@@ -138,7 +138,7 @@ const AdminPage: React.FC = () => {
               <div className="flex gap-4">
                 {news.image_url && (
                   <img
-                    src={`http://https://novasysweb.onrender.com/uploads/${news.image_url}`}
+                    src={`https://novasysweb.onrender.com/uploads/${news.image_url}`}
                     alt={news.title}
                     className="w-32 h-24 object-cover rounded"
                   />
