@@ -41,11 +41,11 @@ app.use(
   })
 );
 app.use("/uploadsMn", cors({
-    origin: ["http://localhost:3000", "https://novastd.com/"],
+    origin: ["http://localhost:3000", "https://novastd.com"],
   }), express.static("uploadsMn"));
 
 app.use("/uploadsEn", cors({
-    origin: ["http://localhost:3000", "https://novastd.com/"],
+    origin: ["http://localhost:3000", "https://novastd.com"],
   }), express.static("uploadsEn"));
 
 
