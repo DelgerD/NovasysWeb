@@ -46,7 +46,6 @@ const Footer: React.FC = () => {
             <li><a href="/components/About" className="hover:text-white transition">{lang === "en" ? "About" : "Бидний тухай"}</a></li>
             <li><a href="/components/Contact" className="hover:text-white transition">{lang === "en" ? "Contact" : "Холбоо барих"}</a></li>
             <li><a href="/components/login" className="hover:text-white transition">{lang === "en" ? "Login" : "Нэвтрэх"}</a></li>
-            <li><a href="/components/register" className="hover:text-white transition">{lang === "en" ? "Login" : "Нэвтрэх"}</a></li>
           </ul>
         </div>
 
