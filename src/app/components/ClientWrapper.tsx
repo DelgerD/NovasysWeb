@@ -3,7 +3,7 @@
 
 import { ReactNode } from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
-import { LanguageProvider } from "@/app/context/LanguageContext";
+import { LanguageProvider } from "../context/LanguageContext";
 
 interface Props {
   children: ReactNode;
