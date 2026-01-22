@@ -3,6 +3,7 @@ import db from "./index"; // манай db wrapper (экспортолсон que
 import { PoolClient } from "pg";
 // src/db/init.ts
 import { Pool } from "pg";
+import postgres from 'postgres'
 
 // export const pool = new Pool({
 //   user: "postgres",

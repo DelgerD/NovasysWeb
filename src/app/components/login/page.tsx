@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -11,58 +11,25 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // const handleLogin = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setError(""); // Алдааг цэвэрлэх
-  //   try {
-  //     const res = await axios.post(
-  //     "https://novasysweb.onrender.com/admin/login",
-  //     { email, password },
-  //     { withCredentials: true }
-  //   );
-  //   console.log("Backend-ээс хариу ирлээ:", res.data);
-  //   if (res.status === 200) {
-  //     // Күүки хадгалагдахгүй байх магадлалтай тул токен ирсэн бол гараар тавих (Optionally)
-  //     // Cookies.set("admin_token", res.data.token); 
-      
-  //     console.log("Амжилттай, шилжиж байна...");
-  //     window.location.href = "/admin"; // Router-ээс илүү баталгаатай
-  //   }
-  //     if (res.data.token) {
-  //     Cookies.set("admin_token", res.data.token, { 
-  //       expires: 1, 
-  //       secure: true, 
-  //       sameSite: 'Lax' // Middleware нэг домэйн дотор (Vercel) уншихад Lax байж болно
-  //     });
-  //   }
-  //     console.log("Login successful, redirecting...");
-  //     router.push("/admin"); 
-  //     router.refresh();// амжилттай login бол admin руу
-  //   } catch (err: any) {
-  //   console.error("Login Error:", err.response || err);
-  //   setError(err.response?.data?.error || "Хүсэлт амжилтгүй боллоо");
-  // }
-  // };
   const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  try {
-    const res = await axios.post(
-      "https://novasysweb.onrender.com/admin/login", // ЭНД: /components биш /admin байх ёстой
+    e.preventDefault();
+    setError(""); // Алдааг цэвэрлэх
+    try {
+      const res = await axios.post(
+      "https://novasysweb.onrender.com/admin/login",
       { email, password },
-      { withCredentials: true } 
+      { withCredentials: true }
     );
-
-    // Амжилттай болбол Token-ийг күүкид хадгалах
-    if (res.data.token) {
-      Cookies.set("admin_token", res.data.token, { expires: 1 });
+          if (res.data.message === "Success") {
+        router.push("/admin"); // Амжилттай нэвтэрсэн тохиолдолд admin page руу шилжих
+      } else {
+        setError(res.data.error || "Login failed");
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.error || "Login failed");
     }
-
-    window.location.href = "/admin"; 
-  } catch (err: any) {
-    console.error("Login Error:", err.response);
-    setError(err.response?.data?.error || "Login failed");
-  }
-};
+  };
+ 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black">
       <form onSubmit={handleLogin} className="bg-white p-8 rounded-xl shadow-lg w-96">
