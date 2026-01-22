@@ -38,10 +38,12 @@ router.post("/login", async (req: Request, res: Response) => {
     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
 
     // Cookie-д хадгалах
-   return res.json({ 
-    message: "Success", 
-    token: token, // Энд token-оо илгээх
-    user: { email: user.email } 
+  res.cookie("admin_token", token, {
+  httpOnly: false, // Middleware уншихад хэрэгтэй бол false (эсвэл true байлгаад front-оор тавих)
+  sameSite: "none",
+  secure: true,
+  maxAge: 24 * 60 * 60 * 1000,
+  path: "/",
 });
 
     // return res.json({ message: "Success" });

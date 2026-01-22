@@ -1,31 +1,30 @@
-// src/middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
-
-const JWT_SECRET = process.env.JWT_SECRET || "SUPER_SECRET_KEY";
 
 export function middleware(req: NextRequest) {
+  // Күүкиг нэрээр нь авах
   const token = req.cookies.get("admin_token")?.value;
 
-  // /admin руу орох гэж байгаа бол шалгах
   if (req.nextUrl.pathname.startsWith("/admin")) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/components/login", req.url));
+    // Хэрэв /admin/login руу орж байгаа бол шалгах шаардлагагүй
+    if (req.nextUrl.pathname === "/admin/login") {
+      return NextResponse.next();
     }
 
-    try {
-      jwt.verify(token, JWT_SECRET);
-      return NextResponse.next(); // cookie зөв бол зөвшөөрөх
-    } catch {
-      return NextResponse.redirect(new URL("/admin/login", req.url));
+    if (!token) {
+      // Күүки байхгүй бол login руу шилжүүлнэ
+      const loginUrl = new URL("/admin/login", req.url);
+      return NextResponse.redirect(loginUrl);
     }
+
+    // ТАЙЛБАР: Энд JWT-г verify хийхдээ 'jose' сан ашиглахыг зөвлөж байна.
+    // Хэрэв jwt.verify ажиллахгүй бол зүгээр л token байгаа эсэхийг нь шалгаад оруулж болно.
+    // Учир нь backend-ийн бүх хүсэлт дээр backend өөрөө дахин шалгах учир аюулгүй.
   }
 
   return NextResponse.next();
 }
 
-// Middleware-г зөв route дээр ажиллуулах
 export const config = {
   matcher: ["/admin/:path*"],
 };

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -14,15 +15,20 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://novasysweb.onrender.com/admin/login",
-        { email, password },
-        // { withCredentials: true } // cookie дамжуулах чухал
-      );
-      localStorage.setItem("admin_token", res.data.token);
-        
-      window.location.href = "/admin";
+      "https://novasysweb.onrender.com/admin/login",
+      { email, password },
+      { withCredentials: true }
+    );
+      if (res.data.token) {
+      Cookies.set("admin_token", res.data.token, { 
+        expires: 1, 
+        secure: true, 
+        sameSite: 'Lax' // Middleware нэг домэйн дотор (Vercel) уншихад Lax байж болно
+      });
+    }
       console.log("Login successful, redirecting...");
-      router.push("/admin"); // амжилттай login бол admin руу
+      router.push("/admin"); 
+      router.refresh();// амжилттай login бол admin руу
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");
     }
