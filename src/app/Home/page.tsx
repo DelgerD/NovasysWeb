@@ -48,7 +48,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* HERO SLIDER SECTION */}
-      <section className="relative h-[90vh] w-full overflow-hidden bg-black">
+      <section className="relative h-[100vh] w-full overflow-hidden bg-black">
         {heroImages.map((img, index) => (
           <div
             key={img}

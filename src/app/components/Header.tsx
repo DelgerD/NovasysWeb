@@ -113,55 +113,85 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white text-black shadow-md">
-          <ul className="flex flex-col p-4 space-y-2">
-            <li>
-              <Link href="/Home" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "Home" : "Нүүр"}
-              </Link>
-            </li>
-            <li>
-              <Link href="/components/Service/mining" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "Mining" : "Уул уурхай"}
-              </Link>
-            </li>
-            <li>
-              <Link href="/components/Service/heavy-industry" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "Heavy Industry" : "Хүнд үйлдвэр"}
-              </Link>
-            </li>
-            <li>
-              <Link href="/components/Service/moving-industry" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "Auto Parts" : "Авто сэлбэг"}
-              </Link>
-            </li>
-            <li>
-              <Link href="/components/Service/construction" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "Construction Materials" : "Барилгын материал"}
-              </Link>
-            </li>
-            <li>
-              <Link href="/components/About" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "About" : "Бидний тухай"}
-              </Link>
-            </li>
-            <li>
-              <Link href="/components/Contact" className="block px-2 py-2 hover:bg-gray-100">
-                {lang === "en" ? "Contact" : "Холбоо барих"}
-              </Link>
-            </li>
-            <li>
-              <button
-                onClick={toggleLang}
-                className="w-full text-left px-2 py-2 hover:bg-gray-100"
-              >
-                {lang === "en" ? "MN" : "EN"}
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+      {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white text-black shadow-md">
+            <ul className="flex flex-col p-4 space-y-2">
+              <li>
+                <Link
+                  href="/Home"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)} // ← энд нэмэв
+                >
+                  {lang === "en" ? "Home" : "Нүүр"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/components/Service/mining"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {lang === "en" ? "Mining" : "Уул уурхай"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/components/Service/heavy-industry"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {lang === "en" ? "Heavy Industry" : "Хүнд үйлдвэр"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/components/Service/moving-industry"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {lang === "en" ? "Auto Parts" : "Авто сэлбэг"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/components/Service/construction"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {lang === "en" ? "Construction Materials" : "Барилгын материал"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/components/About"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {lang === "en" ? "About" : "Бидний тухай"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/components/Contact"
+                  className="block px-2 py-2 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {lang === "en" ? "Contact" : "Холбоо барих"}
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => { toggleLang(); setMobileMenuOpen(false); }} // ← энд бас хаах
+                  className="w-full text-left px-2 py-2 hover:bg-gray-100"
+                >
+                  {lang === "en" ? "MN" : "EN"}
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+
     </header>
   );
 };
