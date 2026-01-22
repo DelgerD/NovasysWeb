@@ -38,6 +38,7 @@ app.use(
     origin: "https://novastd.com", // frontend URL
     credentials: true,               // cookie дамжуулах
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
 app.use("/uploadsMn", cors({

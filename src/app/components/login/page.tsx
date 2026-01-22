@@ -13,12 +13,21 @@ const LoginPage = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(""); // Алдааг цэвэрлэх
     try {
       const res = await axios.post(
       "https://novasysweb.onrender.com/admin/login",
       { email, password },
       { withCredentials: true }
     );
+    console.log("Backend-ээс хариу ирлээ:", res.data);
+    if (res.status === 200) {
+      // Күүки хадгалагдахгүй байх магадлалтай тул токен ирсэн бол гараар тавих (Optionally)
+      // Cookies.set("admin_token", res.data.token); 
+      
+      console.log("Амжилттай, шилжиж байна...");
+      window.location.href = "/admin"; // Router-ээс илүү баталгаатай
+    }
       if (res.data.token) {
       Cookies.set("admin_token", res.data.token, { 
         expires: 1, 
@@ -30,8 +39,9 @@ const LoginPage = () => {
       router.push("/admin"); 
       router.refresh();// амжилттай login бол admin руу
     } catch (err: any) {
-      setError(err.response?.data?.error || "Login failed");
-    }
+    console.error("Login Error:", err.response || err);
+    setError(err.response?.data?.error || "Хүсэлт амжилтгүй боллоо");
+  }
   };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black">
