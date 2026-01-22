@@ -7,7 +7,7 @@ export function middleware(req: NextRequest) {
 
   if (req.nextUrl.pathname.startsWith("/admin")) {
     // Хэрэв /admin/login руу орж байгаа бол шалгах шаардлагагүй
-    if (req.nextUrl.pathname === "/components/login") {
+    if (req.nextUrl.pathname === "/admin/login") {
       return NextResponse.next();
     }
 
