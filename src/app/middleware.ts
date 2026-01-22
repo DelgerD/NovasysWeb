@@ -7,13 +7,13 @@ export function middleware(req: NextRequest) {
 
   if (req.nextUrl.pathname.startsWith("/admin")) {
     // Хэрэв /admin/login руу орж байгаа бол шалгах шаардлагагүй
-    if (req.nextUrl.pathname === "/admin/login") {
+    if (req.nextUrl.pathname === "/components/login") {
       return NextResponse.next();
     }
 
     if (!token) {
       // Күүки байхгүй бол login руу шилжүүлнэ
-      const loginUrl = new URL("/admin/login", req.url);
+      const loginUrl = new URL("/components/login", req.url);
       return NextResponse.redirect(loginUrl);
     }
 

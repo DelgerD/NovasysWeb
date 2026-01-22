@@ -16,7 +16,7 @@ const LoginPage = () => {
     setError(""); // Алдааг цэвэрлэх
     try {
       const res = await axios.post(
-      "https://novasysweb.onrender.com/admin/login",
+      "https://novasysweb.onrender.com/components/login",
       { email, password },
       { withCredentials: true }
     );
