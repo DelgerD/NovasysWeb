@@ -13,11 +13,14 @@ const LoginPage = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(
+      const res = await axios.post(
         "https://novasysweb.onrender.com/admin/login",
         { email, password },
-        { withCredentials: true } // cookie дамжуулах чухал
+        // { withCredentials: true } // cookie дамжуулах чухал
       );
+      localStorage.setItem("admin_token", res.data.token);
+        
+      window.location.href = "/admin";
       console.log("Login successful, redirecting...");
       router.push("/admin"); // амжилттай login бол admin руу
     } catch (err: any) {

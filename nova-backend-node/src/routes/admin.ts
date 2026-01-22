@@ -38,15 +38,13 @@ router.post("/login", async (req: Request, res: Response) => {
     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
 
     // Cookie-д хадгалах
-    res.cookie("admin_token", token, {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true, // production-д true
-      maxAge: 24 * 60 * 60 * 1000,
-      path: "/",
-    });
+   return res.json({ 
+    message: "Success", 
+    token: token, // Энд token-оо илгээх
+    user: { email: user.email } 
+});
 
-    return res.json({ message: "Success" });
+    // return res.json({ message: "Success" });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server error" });
