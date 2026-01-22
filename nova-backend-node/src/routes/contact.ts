@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     };
 
-    await transporter.sendMail(mailOptions);
+    //await transporter.sendMail(mailOptions);
 
     res.status(201).json({
       message: "Мэдээлэл хадгалагдаж, и-мэйл илгээгдлээ",
