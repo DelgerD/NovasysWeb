@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -11,24 +11,48 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // const handleLogin = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setError(""); // Алдааг цэвэрлэх
+  //   try {
+  //     const res = await axios.post(
+  //     "https://novasysweb.onrender.com/admin/login",
+  //     { email, password },
+  //     { withCredentials: true }
+  //   );
+  //         if (res.data.message === "Success") {
+  //       router.push("/admin"); // Амжилттай нэвтэрсэн тохиолдолд admin page руу шилжих
+  //     } else {
+  //       setError(res.data.error || "Login failed");
+  //     }
+  //   } catch (err: any) {
+  //     setError(err.response?.data?.error || "Login failed");
+  //   }
+  // };
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(""); // Алдааг цэвэрлэх
-    try {
-      const res = await axios.post(
+  e.preventDefault();
+  try {
+    const res = await axios.post(
       "https://novasysweb.onrender.com/admin/login",
-      { email, password },
-      { withCredentials: true }
+      { email, password }
     );
-          if (res.data.message === "Success") {
-        router.push("/admin"); // Амжилттай нэвтэрсэн тохиолдолд admin page руу шилжих
-      } else {
-        setError(res.data.error || "Login failed");
-      }
-    } catch (err: any) {
-      setError(err.response?.data?.error || "Login failed");
+
+    if (res.data.token) {
+      // 1. Күүкигээ гараар тавина (Энэ нь Middleware-т хэрэгтэй)
+      Cookies.set("admin_token", res.data.token, { expires: 1 });
+      
+      // 2. LocalStorage-д давхар хадгалж болно (Бусад API хүсэлтэд хэрэгтэй)
+      localStorage.setItem("admin_token", res.data.token);
+
+      console.log("Амжилттай нэвтэрлээ");
+      
+      // 3. Router.push-ээс илүү баталгаатай шилжилт
+      window.location.href = "/admin"; 
     }
-  };
+  } catch (err: any) {
+    setError("Имэйл эсвэл нууц үг буруу байна");
+  }
+};
  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black">

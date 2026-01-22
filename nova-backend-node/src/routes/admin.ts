@@ -22,34 +22,57 @@ export function requireAdmin(req: Request, res: Response, next: NextFunction) {
 }
 
 // Login route
+// router.post("/login", async (req: Request, res: Response) => {
+//   const { email, password } = req.body;
+//   if (!email || !password) return res.status(400).json({ error: "Missing credentials" });
+
+//   try {
+//     const result = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
+//     if (result.rows.length === 0) return res.status(401).json({ error: "Invalid credentials" });
+
+//     const user = result.rows[0];
+//     const match = await bcrypt.compare(password, user.password_hash);
+//     if (!match) return res.status(401).json({ error: "Invalid credentials" });
+
+//     // JWT үүсгэх
+//     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
+
+//     // Cookie-д хадгалах
+//   res.cookie("admin_token", token, {
+//   httpOnly: false, // Middleware уншихад хэрэгтэй бол false (эсвэл true байлгаад front-оор тавих)
+//   sameSite: "none",
+//   secure: true,
+//   maxAge: 24 * 60 * 60 * 1000,
+//   path: "/",
+// });
+
+//     // return res.json({ message: "Success" });
+//   } catch (err) {
+//     console.error(err);
+//     return res.status(500).json({ error: "Server error" });
+//   }
+// });
+// Backend login route
 router.post("/login", async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  if (!email || !password) return res.status(400).json({ error: "Missing credentials" });
-
+  
   try {
     const result = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
-    if (result.rows.length === 0) return res.status(401).json({ error: "Invalid credentials" });
+    if (result.rows.length === 0) return res.status(401).json({ error: "Хэрэглэгч олдсонгүй" });
 
     const user = result.rows[0];
     const match = await bcrypt.compare(password, user.password_hash);
-    if (!match) return res.status(401).json({ error: "Invalid credentials" });
+    if (!match) return res.status(401).json({ error: "Нууц үг буруу" });
 
-    // JWT үүсгэх
     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
 
-    // Cookie-д хадгалах
-  res.cookie("admin_token", token, {
-  httpOnly: false, // Middleware уншихад хэрэгтэй бол false (эсвэл true байлгаад front-оор тавих)
-  sameSite: "none",
-  secure: true,
-  maxAge: 24 * 60 * 60 * 1000,
-  path: "/",
-});
-
-    // return res.json({ message: "Success" });
+    // Күүки бичихээс гадна JSON-оор заавал буцааж өгнө
+    return res.json({ 
+      success: true,
+      token: token 
+    });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: "Серверийн алдаа" });
   }
 });
 router.post("/logout", (_req, res) => {
