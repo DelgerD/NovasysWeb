@@ -48,7 +48,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* HERO SLIDER SECTION */}
-      <section className="relative h-[90vh] w-full overflow-hidden bg-black">
+      <section className="relative h-[100vh] w-full overflow-hidden bg-black">
         {heroImages.map((img, index) => (
           <div
             key={img}
@@ -71,8 +71,8 @@ const Home: React.FC = () => {
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
               {lang === "en" 
-                ? "Global excellence in mining equipment and industrial engineering solutions." 
-                : "Уул уурхайн тоног төхөөрөмж болон үйлдвэрлэлийн инженерийн шилдэг шийдэл."}
+                ? "World-class solutions." 
+                : "Дэлхийн жишигт нийцсэн шийдэл."}
             </p>
             <div className="flex flex-wrap justify-center gap-5">
               <Link href="/components/About" className="px-10 py-4 bg-amber-400 hover:bg-amber-500 text-[#102B5A] font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1">
@@ -107,28 +107,27 @@ const Home: React.FC = () => {
           {[
             {
               title: lang === "en" ? "Moving Equipment" : "Хөдөлгөөнт тоног төхөөрөмж",
-              desc: lang === "en" ? "Precision parts for mobile industrial machinery." : "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх.",
+              desc: lang === "en" ? "Precision parts for mobile industrial machinery" : "Сэлбэг хэрэгсэл, дагалдах засвар үйлчилгээ үзүүлэх",
               icon: <Truck className="w-7 h-7" />,
               href: "/components/Service/moving-industry",
               color: "bg-blue-50"
             },
             {
               title: lang === "en" ? "Heavy Industry" : "Хүнд үйлдвэр",
-              desc: lang === "en" ? "Provide spare parts and accessory maintenance services." : "Хүнд үйлдвэрийн тоног төхөөрөмж: Мотор, хурдны хайрцаг, холбох эд анги, насос, эдгээрийн сэлбэг хэрэгсэл.",
+              desc: lang === "en" ? "Provide spare parts and accessory maintenance services" : "Хүнд үйлдвэрийн тоног төхөөрөмж: Мотор, хурдны хайрцаг, холбох эд анги, насос, эдгээрийн сэлбэг хэрэгсэл",
               icon: <Settings className="w-7 h-7" />,
               href: "/components/Service/heavy-industry",
               color: "bg-amber-50"
             },
             {
               title: lang === "en" ? "Mining Solutions" : "Уул уурхай",
-              desc: lang === "en" ? "Mining equipment parts." : "Уул уурхайн тоног төхөөрөмж эд анги.",
+              desc: lang === "en" ? "Mining equipment parts" : "Уул уурхайн тоног төхөөрөмж тэдгээрийн эд анги",
               icon: <HardHat className="w-7 h-7" />,
               href: "/components/Service/mining",
               color: "bg-emerald-50"
             },
             {
               title: lang === "en" ? "Construction" : "Барилга",
-              desc: lang === "en" ? "Materials and raw materials required for construction work." : "Барилгын ажилд шаардлагатай материал болон түүхий эд.",
               icon: <Construction className="w-7 h-7" />,
               href: "/components/Service/construction",
               color: "bg-orange-50"
