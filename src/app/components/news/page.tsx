@@ -130,7 +130,7 @@ const NewsPage: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={() => setSelectedNews(null)}
-              className="absolute top-6 right-6 z-20 p-3 bg-gray-100 hover:bg-red-500 hover:text-white rounded-full transition-all group shadow-lg"
+              className="absolute top-6 right-6 z-20 p-3 text-black bg-gray-100 hover:bg-red-500 hover:text-white rounded-full transition-all group shadow-lg"
             >
               <X className="w-6 h-6" />
             </button>
@@ -170,7 +170,7 @@ const NewsPage: React.FC = () => {
                 </div>
                 <button 
                   onClick={() => setSelectedNews(null)}
-                  className="px-8 py-3 bg-gray-100 hover:bg-[#102B5A] hover:text-white rounded-xl font-bold transition-all"
+                  className="px-8 py-3 text-black bg-gray-100 hover:bg-[#102B5A] hover:text-white rounded-xl font-bold transition-all"
                 >
                   {lang === "en" ? "Back to News" : "Буцах"}
                 </button>
