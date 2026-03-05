@@ -11,24 +11,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // const handleLogin = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setError(""); // Алдааг цэвэрлэх
-  //   try {
-  //     const res = await axios.post(
-  //     "https://novasysweb.onrender.com/admin/login",
-  //     { email, password },
-  //     { withCredentials: true }
-  //   );
-  //         if (res.data.message === "Success") {
-  //       router.push("/admin"); // Амжилттай нэвтэрсэн тохиолдолд admin page руу шилжих
-  //     } else {
-  //       setError(res.data.error || "Login failed");
-  //     }
-  //   } catch (err: any) {
-  //     setError(err.response?.data?.error || "Login failed");
-  //   }
-  // };
+
   const handleLogin = async (e: React.FormEvent) => {
   e.preventDefault();
   try {

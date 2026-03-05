@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLanguage } from "./context/LanguageContext";
+import { useLanguage } from "../app/context/LanguageContext";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight, Newspaper, Briefcase, Settings, Construction, Truck, HardHat } from "lucide-react";
 
@@ -21,13 +21,44 @@ const Home: React.FC = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
   const { lang } = useLanguage();
-
+  const heroSlides = [
+    {
+      url: "https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      titleEn: "Mining Solutions",
+      titleMn: "Уул Уурхай",
+      descEn: "Reliable equipment for the toughest mining operations.",
+      descMn: "Уул уурхайн хүнд нөхцөлд зориулсан найдвартай тоног төхөөрөмж."
+    },
+    {
+      url: "https://images.pexels.com/photos/257700/pexels-photo-257700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      titleEn: "Heavy Industry",
+      titleMn: "Хүнд Үйлдвэр",
+      descEn: "Industrial engines and precision components.",
+      descMn: "Үйлдвэрлэлийн мотор болон нарийн эд ангиуд."
+    },
+    {
+      url: "https://images.pexels.com/photos/159306/construction-site-build-construction-structure-159306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      titleEn: "Construction Sector",
+      titleMn: "Барилгын Салбар",
+      descEn: "Modern machinery for infrastructure projects.",
+      descMn: "Барилга угсралт, дэд бүтцийн төслүүдийн техник."
+    },
+    {
+      url: "https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      titleEn: "Auto Parts",
+      titleMn: "Авто Сэлбэг",
+      descEn: "Genuine spare parts for heavy-duty vehicles.",
+      descMn: "Хүнд даацын автомашин, механизмын оригинал сэлбэг."
+    }
+  ];
   // Slider controls
   const nextSlide = () => setCurrent((prev) => (prev + 1) % heroImages.length);
   const prevSlide = () => setCurrent((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 6000);
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -35,62 +66,73 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const endpoint = lang === "en" ? "https://novasysweb.onrender.com/newsEn" : "https://novasysweb.onrender.com/news";
-        const response = await axios.get<NewsItem[]>(endpoint);
-        setNews(response.data.slice(0, 3)); // Display latest 3
-      } catch (err) {
-        console.error("Failed to fetch news:", err);
+        const endpoint = lang === "en"
+          ? "https://novasysweb.onrender.com/newsEn"
+          : "https://novasysweb.onrender.com/news";
+
+        const response = await axios.get<NewsItem[]>(endpoint, {
+          timeout: 15000 // 15 секунд хүлээх (Render-ийг асахыг хүлээхэд тустай)
+        });
+
+        if (response.data) {
+          setNews(response.data.slice(0, 3));
+        }
+      } catch (err: any) {
+        if (err.code === 'ECONNABORTED') {
+          console.error("Сервер хариу өгөхөд хэтэрхий удаж байна");
+        } else {
+          console.error("Сүлжээний алдаа гарлаа:", err.message);
+        }
       }
     };
     fetchNews();
   }, [lang]);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* HERO SLIDER SECTION */}
-      <section className="relative h-[100vh] w-full overflow-hidden bg-black">
-        {heroImages.map((img, index) => (
+    <div className="min-h-screen">
+      <section className="relative h-[100vh] w-full overflow-hidden bg-slate-900">
+        {heroSlides.map((slide, index) => (
           <div
-            key={img}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${
-              index === current ? "opacity-100 scale-105" : "opacity-0 scale-100"
-            }`}
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? "opacity-100" : "opacity-0"
+              }`}
           >
-            <img src={img} alt="Hero" className="w-full h-full object-cover brightness-50" />
+            <div className="absolute inset-0 bg-black/40 z-10" />
+            <img
+              src={slide.url}
+              alt={slide.titleEn}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover"
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center text-center z-20 px-6">
+              <div className={`max-w-4xl transition-all duration-700 ${index === current ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+                <span className="px-4 py-1 text-xs font-bold text-amber-500 uppercase border border-amber-500 mb-6 inline-block">
+                  {slide.titleMn}
+                </span>
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                  Nova <span className="text-amber-500">Sys Std</span>
+                </h1>
+                <p className="text-lg text-slate-100 mb-8 max-w-xl mx-auto">
+                  {slide.descMn}
+                </p>
+              </div>
+            </div>
           </div>
         ))}
 
-        {/* Hero Content */}
-        <div className="relative h-full flex items-center justify-center text-center px-6 z-10">
-          <div className="max-w-4xl">
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-widest text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full animate-fade-in">
-              {lang === "en" ? "Industry Excellence" : "Салбартаа Тэргүүлэгч"}
-            </span>
-            <h1 className="text-5xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tighter">
-              Nova <span className="text-amber-400">Sys Std</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-              {lang === "en" 
-                ? "World-class solutions." 
-                : "Дэлхийн жишигт нийцсэн шийдэл."}
-            </p>
-            <div className="flex flex-wrap justify-center gap-5">
-              <Link href="/components/About" className="px-10 py-4 bg-amber-400 hover:bg-amber-500 text-[#102B5A] font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1">
-                {lang === "en" ? "About us" : "Бидний тухай"}
-              </Link>
-              <Link href="/components/Contact" className="px-10 py-4 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-bold rounded-2xl transition-all">
-                {lang === "en" ? "Contact Us" : "Холбоо барих"}
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Slider Navigation */}
-        <button onClick={prevSlide} className="absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur text-white hover:bg-amber-400 hover:text-[#102B5A] transition-all">
-          <ChevronLeft className="w-6 h-6" />
+        {/* Слайд солих товчлуурнууд */}
+        <button
+          onClick={() => setCurrent((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white"
+        >
+          <ChevronLeft size={48} />
         </button>
-        <button onClick={nextSlide} className="absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur text-white hover:bg-amber-400 hover:text-[#102B5A] transition-all">
-          <ChevronRight className="w-6 h-6" />
+        <button
+          onClick={() => setCurrent((prev) => (prev + 1) % heroSlides.length)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white"
+        >
+          <ChevronRight size={48} />
         </button>
       </section>
 
@@ -167,10 +209,10 @@ const Home: React.FC = () => {
               news.map((item) => (
                 <div key={item.id} onClick={() => setSelectedNews(item)} className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-pointer">
                   <div className="h-64 overflow-hidden relative">
-                    <img 
-                      src={item.image ? (lang === "en" ? `https://novasysweb.onrender.com/uploadsEn/${item.image}` : `https://novasysweb.onrender.com/uploadsMn/${item.image}`) : "/default-image.png"} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                    <img
+                      src={item.image ? (lang === "en" ? `https://novasysweb.onrender.com/uploadsEn/${item.image}` : `https://novasysweb.onrender.com/uploadsMn/${item.image}`) : "/default-image.png"}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                     />
                     <div className="absolute top-4 left-4 px-4 py-1 bg-amber-400 text-[#102B5A] text-xs font-bold rounded-full">
                       {new Date(item.date).toLocaleDateString()}
@@ -201,8 +243,8 @@ const Home: React.FC = () => {
               {lang === "en" ? "Ready to Power Your Operations?" : "Ирээдүйг хамтдаа бүтээцгээе"}
             </h2>
             <p className="text-blue-100/70 text-lg mb-12 leading-relaxed">
-              {lang === "en" 
-                ? "Get in touch with our experts to discuss your mining projects and specialized equipment requirements." 
+              {lang === "en"
+                ? "Get in touch with our experts to discuss your mining projects and specialized equipment requirements."
                 : "Уул уурхайн төслүүд болон тоног төхөөрөмжийн хэрэгцээний талаар ярилцахын тулд бидэнтэй холбогдоно уу."}
             </p>
             <Link href="/components/Contact" className="inline-flex items-center gap-3 px-12 py-5 bg-amber-400 hover:bg-amber-500 text-[#102B5A] font-bold rounded-2xl shadow-2xl transition-all hover:scale-105 active:scale-95">
@@ -221,7 +263,7 @@ const Home: React.FC = () => {
               <ChevronLeft className="w-6 h-6" />
             </button>
             <div className="h-80 md:h-96 w-full">
-               <img src={selectedNews.image ? (lang === "en" ? `https://novasysweb.onrender.com/uploadsEn/${selectedNews.image}` : `https://novasysweb.onrender.com/uploadsMn/${selectedNews.image}`) : "/default-image.png"} alt={selectedNews.title} className="w-full h-full object-cover" />
+              <img src={selectedNews.image ? (lang === "en" ? `https://novasysweb.onrender.com/uploadsEn/${selectedNews.image}` : `https://novasysweb.onrender.com/uploadsMn/${selectedNews.image}`) : "/default-image.png"} alt={selectedNews.title} className="w-full h-full object-cover" />
             </div>
             <div className="p-10">
               <span className="text-amber-500 font-bold text-sm mb-4 block">{new Date(selectedNews.date).toLocaleDateString()}</span>

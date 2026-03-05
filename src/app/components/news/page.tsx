@@ -23,14 +23,23 @@ const NewsPage: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        setLoading(true);
-        const endpoint = lang === "en" ? "https://novasysweb.onrender.com/newsEn" : "https://novasysweb.onrender.com/news";
-        const response = await axios.get<NewsItem[]>(endpoint);
-        setNews(response.data);
-      } catch (err) {
-        console.error("Failed to fetch news:", err);
-      } finally {
-        setLoading(false);
+        const endpoint = lang === "en"
+          ? "https://novasysweb.onrender.com/newsEn"
+          : "https://novasysweb.onrender.com/news";
+
+        const response = await axios.get<NewsItem[]>(endpoint, {
+          timeout: 15000 // 15 секунд хүлээх (Render-ийг асахыг хүлээхэд тустай)
+        });
+
+        if (response.data) {
+          setNews(response.data.slice(0, 3));
+        }
+      } catch (err: any) {
+        if (err.code === 'ECONNABORTED') {
+          console.error("Сервер хариу өгөхөд хэтэрхий удаж байна");
+        } else {
+          console.error("Сүлжээний алдаа гарлаа:", err.message);
+        }
       }
     };
     fetchNews();
@@ -53,7 +62,7 @@ const NewsPage: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-black text-white mb-8">
             {lang === "en" ? "News & Insights" : "Мэдээ мэдээлэл"}
           </h1>
-          
+
           {/* SEARCH BAR */}
           <div className="max-w-xl mx-auto relative group">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-amber-400 transition-colors w-5 h-5" />
@@ -159,16 +168,16 @@ const NewsPage: React.FC = () => {
               <div className="prose prose-lg max-w-none text-gray-700 leading-loose whitespace-pre-wrap">
                 {selectedNews.description}
               </div>
-              
+
               <div className="mt-16 pt-8 border-t border-gray-100 flex justify-between items-center">
                 <div className="flex gap-4">
-                   <div className="w-10 h-10 rounded-full bg-[#102B5A] flex items-center justify-center text-white font-bold">N</div>
-                   <div>
-                     <p className="text-sm font-bold text-[#102B5A]">Nova Sys Std</p>
-                     <p className="text-xs text-gray-400">Official Newsroom</p>
-                   </div>
+                  <div className="w-10 h-10 rounded-full bg-[#102B5A] flex items-center justify-center text-white font-bold">N</div>
+                  <div>
+                    <p className="text-sm font-bold text-[#102B5A]">Nova Sys Std</p>
+                    <p className="text-xs text-gray-400">Official Newsroom</p>
+                  </div>
                 </div>
-                <button 
+                <button
                   onClick={() => setSelectedNews(null)}
                   className="px-8 py-3 text-black bg-gray-100 hover:bg-[#102B5A] hover:text-white rounded-xl font-bold transition-all"
                 >

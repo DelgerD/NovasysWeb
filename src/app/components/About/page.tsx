@@ -14,7 +14,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-white ">
       
       {/* HERO SECTION */}
       <section className="relative py-32 overflow-hidden bg-[#102B5A]">
@@ -47,7 +47,7 @@ const About: React.FC = () => {
                 {stat.icon}
               </div>
               <div className="text-3xl font-bold text-[#102B5A] mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">{stat.label}</div>
+              <div className="text-md text-gray-500 font-medium tracking-wide">{stat.label}</div>
             </div>
           ))}
         </div>

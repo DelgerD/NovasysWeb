@@ -41,16 +41,16 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* --- HERO HEADER --- */}
-      <section className="relative py-24 bg-[#102B5A] overflow-hidden">
+      <section className="relative py-10 mt-16 bg-[#102B5A] overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_#fbbf24_0%,_transparent_50%)]" />
         <div className="relative container mx-auto px-6 text-center">
           {/* <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-widest text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full">
             {lang === "en" ? "Get in touch" : "Холбоо тогтоох"}
           </span> */}
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
+          <h1 className="text-2xl md:text-5xl font-bold text-white mb-6">
             {lang === "en" ? "Contact Our Experts" : "Бидэнтэй холбогдох"}
           </h1>
-          <p className="text-blue-100/70 text-lg max-w-2xl mx-auto font-light">
+          <p className="text-blue-100/70 text-md max-w-2xl mx-auto font-light">
             {lang === "en" 
               ? "Nova Sys Std is ready to support your mining and industrial projects with global expertise." 
               : "Nova Sys Std нь таны уул уурхай, үйлдвэрлэлийн төслүүдийг дэлхийн түвшний туршлагаар дэмжихэд бэлэн байна."}
