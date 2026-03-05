@@ -10,14 +10,14 @@ import { ChevronLeft, ChevronRight, ArrowRight, Settings, Construction, Truck, H
 const heroSlides = [
   {
     // 1. Уул уурхай (Хуучнаараа - Найдвартай)
-    url: "https://images.unsplash.com/photo-1582260600171-8935c1056a29?q=80&w=1600&auto=format&fit=crop",
+    url: "https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1600",
     titleMn: "Уул Уурхай", titleEn: "Mining Solutions",
     descMn: "Уул уурхайн хүнд нөхцөлд зориулсан найдвартай тоног төхөөрөмж.",
     descEn: "Reliable equipment for the toughest mining operations."
   },
   {
     // 2. Хүнд үйлдвэр (Хуучнаараа - Найдвартай)
-    url: "https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    url: "https://images.pexels.com/photos/257700/pexels-photo-257700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     titleMn: "Хүнд Үйлдвэр", titleEn: "Heavy Industry",
     descMn: "Үйлдвэрлэлийн мотор, насос болон нарийн эд ангиуд.",
     descEn: "Industrial engines, pumps, and precision components."
