@@ -1,12 +1,9 @@
-"use client";
-
-import type { Metadata } from "next";
+// src/app/layout.tsx
+import type { Metadata, Viewport } from "next"; // 'use client' байхгүй!
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import { LanguageProvider } from "./context/LanguageContext";
-import { usePathname } from "next/navigation";
+import ClientWrapper from "./components/ClientWrapper"; // Өмнө хийсэн Provider-уудын wrapper
+import HeaderFooterWrapper from "./components/HeaderFooterWrapper"; // Шинэ wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,27 +15,67 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: {
+    default: "Nova Sys Std",
+    template: "%s | NovaSys",
+  },
+  description: "NovaSys provides world-class solutions in mining, heavy industry, auto parts, and construction materials.",
+  keywords: [
+  // --- English (Professional & Industrial) ---
+  "NovaSys Mongolia", 
+  "Mining Solutions Mongolia", 
+  "Heavy Industrial Equipment Mongolia", 
+  "Auto Spare Parts Ulaanbaatar", 
+  "Construction Materials Mongolia", 
+  "Industrial Engineering Services", 
+  "Mining Machinery Supplier", 
+  "Heavy Duty Truck Parts Mongolia", 
+  "Nova Sys Std Mongolia",
+
+  // --- Mongolian (Cyrillic) ---
+  "НоваСис Монгол", 
+  "Уул уурхайн шийдэл", 
+  "Хүнд үйлдвэрлэлийн тоног төхөөрөмж", 
+  "Авто сэлбэгийн худалдаа", 
+  "Барилгын материалын нийлүүлэлт", 
+  "Монгол улсын уул уурхай", 
+  "Сэлбэг хэрэгсэл Улаанбаатар", 
+  "Үйлдвэрлэлийн инженерчлэл",
+
+  // --- Mongolian Galig (Latin / Search Friendly) ---
+  "NovaSys Mongol", 
+  "Uul uurhai Mongolia", 
+  "Hund uildver Mongol", 
+  "Avto selbeg Ulaanbaatar", 
+  "Barilgyn material niiluulelt", 
+  "Tonog tuuhuurumj Mongol", 
+  "Uul uurhain tonog tuuhuurumj", 
+  "Nova Sis Std", 
+  "Mongol uls mining"
+],
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#102B5A",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname(); // одоогийн URL-г авах
-
-  const isAdminRoute = pathname?.startsWith("/admin");
-
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{ background: "#ffffff" }}
-      >
-        <LanguageProvider>
-          {/* /admin замд Header харуулахгүй */}
-          {!isAdminRoute && <Header />}
-
-          <main>{children}</main>
-
-          {/* /admin замд Footer харуулахгүй */}
-          {!isAdminRoute && <Footer />}
-        </LanguageProvider>
+    <html lang="mn">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* 1. Эхлээд Provider-ууд (Language, Parallax) */}
+        <ClientWrapper>
+          {/* 2. Дараа нь Header/Footer-ийн логик */}
+          <HeaderFooterWrapper>
+            {children}
+          </HeaderFooterWrapper>
+        </ClientWrapper>
       </body>
     </html>
   );
