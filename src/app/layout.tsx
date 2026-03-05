@@ -16,6 +16,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  
+  // ... бусад metadata
+  icons: {
+    icon: [
+      { url: '/favicon.png' }, // Default
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png',
+    apple: [
+      { url: '/favicon.png', sizes: '180x180', type: 'image/png' }, // Apple төхөөрөмжид зориулсан стандарт хэмжээ
+    ],
+  },
+
   title: {
     default: "Nova Sys Std",
     template: "%s | NovaSys",
@@ -54,9 +68,7 @@ export const metadata: Metadata = {
   "Nova Sis Std", 
   "Mongol uls mining"
 ],
-  icons: {
-    icon: "/favicon.png",
-  },
+  
 };
 
 export const viewport: Viewport = {
