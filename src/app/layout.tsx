@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata, Viewport } from "next"; // 'use client' байхгүй!
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -20,13 +19,13 @@ export const metadata: Metadata = {
   // ... бусад metadata
   icons: {
     icon: [
-      { url: '/favicon.png' }, // Default
-      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon.png' }, 
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
     ],
-    shortcut: '/favicon.png',
+    shortcut: '/icon.png',
     apple: [
-      { url: '/favicon.png', sizes: '180x180', type: 'image/png' }, // Apple төхөөрөмжид зориулсан стандарт хэмжээ
+      { url: '/icon.png', sizes: '180x180', type: 'image/png' }, // Apple төхөөрөмжид зориулсан стандарт хэмжээ
     ],
   },
 
