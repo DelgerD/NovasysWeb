@@ -15,59 +15,62 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  
+
   // ... бусад metadata
   icons: {
     icon: [
-      { url: '/icon.png' }, 
-      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+      { url: '/nova.png' },
+      { url: '/nova.png', sizes: '32x32', type: 'image/png' },
+      { url: '/nova.png', sizes: '192x192', type: 'image/png' },
     ],
-    shortcut: '/icon.png',
+    shortcut: '/nova.png',
     apple: [
-      { url: '/icon.png', sizes: '180x180', type: 'image/png' }, // Apple төхөөрөмжид зориулсан стандарт хэмжээ
+      { url: '/nova.png', sizes: '180x180', type: 'image/png' }, // Apple төхөөрөмжид зориулсан стандарт хэмжээ
     ],
   },
 
   title: {
-    default: "Nova Sys Std",
+    // Зураг дээрх "Nova Sys Std" гэдэг цэнхэр гарчиг ингэж солигдоно:
+    default: "Нова Сис Стандарт",
     template: "%s | NovaSys",
   },
-  description: "NovaSys provides world-class solutions in mining, heavy industry, auto parts, and construction materials.",
+
+  // Зураг дээрх "NovaSys provides world-class..." гэдэг саарал тайлбар ингэж солигдоно:
+  description: "Нова Сис Стд нь уул уурхай, хүнд үйлдвэрлэл, авто сэлбэг болон барилгын материалын чиглэлээр дэлхийн жишигт нийцсэн шийдлүүдийг нийлүүлнэ.",
   keywords: [
-  // --- English (Professional & Industrial) ---
-  "NovaSys Mongolia", 
-  "Mining Solutions Mongolia", 
-  "Heavy Industrial Equipment Mongolia", 
-  "Auto Spare Parts Ulaanbaatar", 
-  "Construction Materials Mongolia", 
-  "Industrial Engineering Services", 
-  "Mining Machinery Supplier", 
-  "Heavy Duty Truck Parts Mongolia", 
-  "Nova Sys Std Mongolia",
+    // --- English (Professional & Industrial) ---
+    "NovaSys Mongolia",
+    "Mining Solutions Mongolia",
+    "Heavy Industrial Equipment Mongolia",
+    "Auto Spare Parts Ulaanbaatar",
+    "Construction Materials Mongolia",
+    "Industrial Engineering Services",
+    "Mining Machinery Supplier",
+    "Heavy Duty Truck Parts Mongolia",
+    "Nova Sys Std Mongolia",
 
-  // --- Mongolian (Cyrillic) ---
-  "НоваСис Монгол", 
-  "Уул уурхайн шийдэл", 
-  "Хүнд үйлдвэрлэлийн тоног төхөөрөмж", 
-  "Авто сэлбэгийн худалдаа", 
-  "Барилгын материалын нийлүүлэлт", 
-  "Монгол улсын уул уурхай", 
-  "Сэлбэг хэрэгсэл Улаанбаатар", 
-  "Үйлдвэрлэлийн инженерчлэл",
+    // --- Mongolian (Cyrillic) ---
+    "НоваСис Монгол",
+    "Уул уурхайн шийдэл",
+    "Хүнд үйлдвэрлэлийн тоног төхөөрөмж",
+    "Авто сэлбэгийн худалдаа",
+    "Барилгын материалын нийлүүлэлт",
+    "Монгол улсын уул уурхай",
+    "Сэлбэг хэрэгсэл Улаанбаатар",
+    "Үйлдвэрлэлийн инженерчлэл",
 
-  // --- Mongolian Galig (Latin / Search Friendly) ---
-  "NovaSys Mongol", 
-  "Uul uurhai Mongolia", 
-  "Hund uildver Mongol", 
-  "Avto selbeg Ulaanbaatar", 
-  "Barilgyn material niiluulelt", 
-  "Tonog tuuhuurumj Mongol", 
-  "Uul uurhain tonog tuuhuurumj", 
-  "Nova Sis Std", 
-  "Mongol uls mining"
-],
-  
+    // --- Mongolian Galig (Latin / Search Friendly) ---
+    "NovaSys Mongol",
+    "Uul uurhai Mongolia",
+    "Hund uildver Mongol",
+    "Avto selbeg Ulaanbaatar",
+    "Barilgyn material niiluulelt",
+    "Tonog tuuhuurumj Mongol",
+    "Uul uurhain tonog tuuhuurumj",
+    "Nova Sis Std",
+    "Mongol uls mining"
+  ],
+
 };
 
 export const viewport: Viewport = {

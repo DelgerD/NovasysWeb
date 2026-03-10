@@ -87,7 +87,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* HERO SLIDER SECTION */}
-      <section className="relative h-[100vh] w-full overflow-hidden bg-black">
+      <section className="relative h-[100vh] w-full overflow-hidden bg-white">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
@@ -238,7 +238,7 @@ const Home: React.FC = () => {
 
       {/* CTA SECTION */}а
 
-      <section className="py-24 container mx-auto px-6 relative overflow-hidden">
+      <section className="py-24 container mx-auto px-6 relative overflow-hidden ">
         {/* Арын чимэглэл - Зөөлөн гэрэлтэлт */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-400/10 rounded-full blur-[120px] -z-10" />
 
