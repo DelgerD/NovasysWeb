@@ -37,8 +37,9 @@ const MovingIndustryPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white  py-12">
       {/* HERO SECTION */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#102B5A]">
-        {/* Background Decorative Elements */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#102B5A] pt-32 pb-12 md:pt-16 md:pb-20">
+        {/* pt-32 нэмснээр Header-ийн дороос эхэлнэ. lg:pt-0 нь том дэлгэцэнд хэвийн болгоно */}
+
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 -left-20 w-96 h-96 bg-amber-400 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 -right-20 w-96 h-96 bg-blue-400 rounded-full blur-[120px]" />
@@ -46,32 +47,25 @@ const MovingIndustryPage: React.FC = () => {
 
         <div className="relative container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-left">
-            {/* <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full">
-              {lang === "en" ? "Genuine Quality" : "Оригинал Чанар"}
-            </span> */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1]">
+            {/* Гар утсанд text-3xl эсвэл text-4xl болгож багасгав */}
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight md:leading-[1.1]">
               {lang === "en" ? (
                 <>Premium <span className="text-amber-400">Auto Parts</span> Solutions</>
               ) : (
-                <>Авто  <span className="text-amber-400">Сэлбэгийн</span> <span className="text-amber-400">Шилдэг</span> Шийдэл</>
+                <>Авто <span className="text-amber-400">Сэлбэгийн</span> <br className="hidden sm:block" /> <span className="text-amber-400">Шилдэг</span> Шийдэл</>
               )}
             </h1>
-            <p className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
               {lang === "en"
                 ? "Supplying high-performance components for passenger cars and heavy-duty industrial vehicles."
                 : "Суудлын автомашин болон хүнд даацын тусгай техникүүдэд зориулсан өндөр үзүүлэлттэй сэлбэг хэрэгслийн нийлүүлэлт."}
             </p>
-            <div className="flex flex-wrap gap-4">
-              {/* <a href="#categories" className="px-8 py-4 bg-amber-400 hover:bg-amber-500 text-[#102B5A] font-bold rounded-xl transition-all transform hover:-translate-y-1 shadow-lg">
-                {lang === "en" ? "View Categories" : "Төрлүүд үзэх"}
-              </a> */}
-            </div>
           </div>
 
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-amber-400 to-amber-200 rounded-[2rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
             <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-2xl">
-              <h3 className="text-2xl font-bold text-white mb-8 italic">
+              <h3 className="text-2xl font-bold text-white mb-8">
                 {lang === "en" ? "Additionally" : "Нэмэлтээр"}
               </h3>
               <div className="space-y-6">

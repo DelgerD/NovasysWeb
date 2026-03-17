@@ -38,35 +38,30 @@ const HeavyIndustryPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white  py-12">
       {/* HERO SECTION */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#102B5A]">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#102B5A] pt-32 pb-12 md:pt-16 md:pb-20">
+        {/* pt-32: Гар утас дээр Header-ийн цаагуур орохоос хамгаалж дээрээс нь зай авна. lg:pt-0: Том дэлгэцэнд хэвийн болно */}
+
         {/* Background Patterns */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 -left-20 w-[500px] h-[500px] bg-amber-400 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 -right-20 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[120px]" />
+          <div className="absolute top-0 -left-20 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-amber-400 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 -right-20 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-500 rounded-full blur-[120px]" />
         </div>
 
         <div className="relative container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-left">
-            {/* <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full">
-              {lang === "en" ? "Engineering Excellence" : "Инженерчлэлийн Шилдэг Шийдэл"}
-            </span> */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1]">
+            {/* Гар утсанд текстийг 3xl-ээс эхлүүлж, md дэлгэцнээс 7xl болгон томруулна */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight md:leading-[1.1]">
               {lang === "en" ? (
                 <>Next-Gen <span className="text-amber-400">Industrial</span> Solutions</>
               ) : (
-                <>Хүнд үйлдвэрийн <span className="text-amber-400">Шийдлүүд</span> </>
+                <>Хүнд үйлдвэрийн <br className="hidden sm:block" /> <span className="text-amber-400">Шийдлүүд</span> </>
               )}
             </h1>
-            <p className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
               {lang === "en"
                 ? "Powering large-scale industrial operations with world-class machinery, engineering, and unmatched reliability."
                 : "Дэлхийн жишигт нийцсэн техник хэрэгсэл, инженерчлэлээр томоохон үйлдвэрүүдийн үйл ажиллагааг тасралтгүй, найдвартай дэмжинэ."}
             </p>
-            <div className="flex flex-wrap gap-4">
-              {/* <button className="px-8 py-4 bg-amber-400 hover:bg-amber-500 text-[#102B5A] font-bold rounded-xl transition-all transform hover:-translate-y-1 shadow-lg shadow-amber-400/20">
-                {lang === "en" ? "Explore Services" : "Үйлчилгээ үзэх"}
-              </button> */}
-            </div>
           </div>
 
           <div className="relative group">
@@ -160,22 +155,22 @@ const HeavyIndustryPage: React.FC = () => {
                   ? "Partner with us for reliable heavy industry solutions."
                   : "Найдвартай хүнд үйлдвэрийн шийдлүүдийн төлөө бидэнтэй хамтар."}
               </p>
-             <a
-                             href="/components/Contact"
-                             className="relative overflow-hidden inline-flex items-center gap-3 px-12 py-5 bg-amber-400 hover:bg-white text-[#102B5A] font-bold rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 group"
-                           >
-                             {/* Гялалзах эффект (Shimmer) */}
-                             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[200%] animate-[shimmer_2.5s_infinite_linear]"
-                               style={{
-                                 backgroundImage: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)'
-                               }}
-                             />
-             
-                             <span className="relative z-10">
-                               {lang === "en" ? "Contact Us" : "Холбоо барих"}
-                             </span>
-                             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform" />
-                           </a>
+              <a
+                href="/components/Contact"
+                className="relative overflow-hidden inline-flex items-center gap-3 px-12 py-5 bg-amber-400 hover:bg-white text-[#102B5A] font-bold rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 group"
+              >
+                {/* Гялалзах эффект (Shimmer) */}
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[200%] animate-[shimmer_2.5s_infinite_linear]"
+                  style={{
+                    backgroundImage: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)'
+                  }}
+                />
+
+                <span className="relative z-10">
+                  {lang === "en" ? "Contact Us" : "Холбоо барих"}
+                </span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform" />
+              </a>
             </div>
           </div>
         </div>

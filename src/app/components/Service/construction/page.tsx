@@ -38,19 +38,18 @@ const ConstructionPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white  py-12">
       {/* HERO SECTION */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#102B5A]">
-        {/* Background Gradients */}
-        <div className="absolute inset-0 opacity-20">
+      <section className="relative z-0 min-h-[80vh] flex items-center overflow-hidden bg-[#102B5A] pt-24 pb-12 md:pt-16 md:pb-20">
+        {/* pt-28 нэмснээр Header-ийн цаагуур орохоос сэргийлнэ */}
+
+        {/* Background Gradients - үүний z-index-ийг хасах утгаар өгч ард нь үлдээнэ */}
+        <div className="absolute inset-0 opacity-20 -z-10">
           <div className="absolute top-0 -left-20 w-[500px] h-[500px] bg-amber-400 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 -right-20 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[120px]" />
         </div>
 
-        <div className="relative container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="text-left">
-            {/* <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full">
-              {lang === "en" ? "Built to Last" : "Насан туршийн баталгаа"}
-            </span> */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1]">
+        <div className="relative container mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
+          <div className="text-left mt-4 md:mt-0"> {/* Mobile дээр бага зэрэг зай нэмэв */}
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               {lang === "en" ? (
                 <>Constructing <span className="text-amber-400">Future</span> Landmarks</>
               ) : (
